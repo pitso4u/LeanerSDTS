@@ -1,0 +1,31 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\sam\OneDrive\Documents\NetBeansProjects\LeanerSDTS\dist\Bakubung Learner.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\sam\OneDrive\Documents\NetBeansProjects\LeanerSDTS\dist\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	1.008.000
+Java max ver:	
+JRE paths:	jre
+Check launcher:	C:\Users\sam\OneDrive\Documents\NetBeansProjects\LeanerSDTS\dist\jre\bin\javaw.exe (not found)
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Version string: 1.008.000 / 64-Bit (OK)
+Check launcher:	C:\Program Files\Java\jre1.8.0_421\bin\javaw.exe (OK)
+Match:		1.008.000
+Runtime used:	1.008.000 (64-bit)
+Heap -Xms:	Requested 128 MB / 0%, Available: 726 MB, Heap size: 128 MB
+Heap -Xmx:	Requested 512 MB / 0%, Available: 726 MB, Heap size: 512 MB
+Main class:	leanersdts.LeanerSDTS
+Add classpath:	lib\gson-2.8.9.jar
+Add classpath:	lib\jfoenix.jar
+Add classpath:	lib\logback-core-1.3.0.jar
+Add classpath:	lib\postgresql-42.7.3.jar
+Add classpath:	lib\slf4j-api-1.7.32.jar
+Launcher:	C:\Program Files\Java\jre1.8.0_421\bin\javaw.exe
+Launcher args:	-Xms128m -Xmx512m -classpath "C:\Users\sam\OneDrive\Documents\NetBeansProjects\LeanerSDTS\dist\Bakubung Learner.exe;lib\gson-2.8.9.jar;lib\jfoenix.jar;lib\logback-core-1.3.0.jar;lib\postgresql-42.7.3.jar;lib\slf4j-api-1.7.32.jar" leanersdts.LeanerSDTS
+Args length:	251/32768 chars
+Exit code:	0
