@@ -1,4 +1,4 @@
-package leanersdts;
+package main.java.leanersdts;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -8,8 +8,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import java.util.*;
+import main.java.leanersdts.QuizQuestion;
+import main.java.leanersdts.QuizQuestionDatabase;
 
-public class QuizScreen {
+public class QuizScreen implements ControlledScreen{
     @FXML private Label timerLabel;
     @FXML private Label questionNumberLabel;
     @FXML private Text questionText;
@@ -23,7 +25,7 @@ public class QuizScreen {
     private Map<Integer, Integer> userAnswers = new HashMap<>();
     private Timeline timer;
     private int timeRemaining = 3600; // 60 minutes in seconds
-
+private ScreenManager screenManager;
     @FXML
     public void initialize() {
         loadQuestions();
@@ -110,7 +112,7 @@ public class QuizScreen {
         int correctAnswers = 0;
         for (int i = 0; i < questions.size(); i++) {
             if (userAnswers.containsKey(i) && 
-                userAnswers.get(i) == questions.get(i).getCorrectAnswerIndex()) {
+                userAnswers.get(i) == questions.get(i).getCorrectOption()) {
                 correctAnswers++;
             }
         }
@@ -141,5 +143,20 @@ public class QuizScreen {
         previousButton.setDisable(currentIndex == 0);
         nextButton.setDisable(currentIndex == questions.size() - 1);
         submitButton.setDisable(questions.isEmpty());
+    }
+
+    @Override
+    public void setScreenParent(ScreenManager screenParent) {
+        this.screenManager = screenParent;
+    }
+
+    @Override
+    public void runOnScreenChange() {
+        // Code to run when the screen is changed, if needed
+    }
+
+    @Override
+    public void cleanup() {
+        // Cleanup code, if needed
     }
 }

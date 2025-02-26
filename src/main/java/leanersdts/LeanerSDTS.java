@@ -63,7 +63,7 @@ public class LeanerSDTS extends Application {
             mainContainer.loadScreen(QuizSummaryScreenID, QuizSummaryScreenFile);
 
             // Set the initial screen (e.g., Login screen)
-            mainContainer.setScreen(LeanerSDTS.LoginScreenID);
+            mainContainer.setScreen(LeanerSDTS.QuizScreenID);
 
             // Link your CSS file
             // Link your CSS file

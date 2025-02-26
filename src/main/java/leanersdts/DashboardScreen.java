@@ -51,40 +51,40 @@ public class DashboardScreen implements ControlledScreen {
 
     @FXML
     private void handleTakeQuizButtonAction() {
-//        screenManager.setScreen("TakeQuizScreen");
-        if (screenManager == null) {
-            LOGGER.error("ScreenManager is not initialized.");
-            showAlert("Error", "Application error. Please restart the application.");
-            return;
-        }
-
-        // Load the TakeQuizScreen if not already loaded
-        ControlledScreen controller = screenManager.getController(LeanerSDTS.QuizScreenID);
-        if (controller == null) {
-            LOGGER.info("TakeQuizScreen not loaded. Attempting to load now...");
-            controller = screenManager.loadScreen(LeanerSDTS.TakeQuizScreenID, LeanerSDTS.TakeQuizScreenFile);
-            if (controller == null) {
-                LOGGER.error("Failed to load TakeQuizScreen.");
-                showAlert("Error", "Quiz screen is not available. Please contact support.");
-                return;
-            }
-        }
-
-        // Ensure the loaded screen is a TakeQuizScreen instance
-        if (controller instanceof TakeQuizScreen) {
-            TakeQuizScreen takeQuizScreenController = (TakeQuizScreen) controller;
-            // Start the quiz timer
-            takeQuizScreenController.startQuizTimer();
-
-            // Switch to the quiz screen
-            if (!screenManager.setScreen(LeanerSDTS.TakeQuizScreenID)) {
-                LOGGER.error("Failed to switch to TakeQuizScreen.");
-                showAlert("Error", "Unable to display the quiz screen. Please try again.");
-            }
-        } else {
-            LOGGER.error("Loaded controller is not a TakeQuizScreen instance.");
-            showAlert("Error", "Unexpected screen configuration. Please contact support.");
-        }
+        screenManager.setScreen("QuizScreen");
+//        if (screenManager == null) {
+//            LOGGER.error("ScreenManager is not initialized.");
+//            showAlert("Error", "Application error. Please restart the application.");
+//            return;
+//        }
+//
+//        // Load the TakeQuizScreen if not already loaded
+//        ControlledScreen controller = screenManager.getController(LeanerSDTS.QuizScreenID);
+//        if (controller == null) {
+//            LOGGER.info("TakeQuizScreen not loaded. Attempting to load now...");
+//            controller = screenManager.loadScreen(LeanerSDTS.QuizScreenID, LeanerSDTS.QuizScreenFile);
+//            if (controller == null) {
+//                LOGGER.error("Failed to load TakeQuizScreen.");
+//                showAlert("Error", "Quiz screen is not available. Please contact support.");
+//                return;
+//            }
+//        }
+//
+//        // Ensure the loaded screen is a TakeQuizScreen instance
+//        if (controller instanceof TakeQuizScreen) {
+//            TakeQuizScreen takeQuizScreenController = (TakeQuizScreen) controller;
+//            // Start the quiz timer
+//            takeQuizScreenController.startQuizTimer();
+//
+//            // Switch to the quiz screen
+//            if (!screenManager.setScreen(LeanerSDTS.QuizScreenID)) {
+//                LOGGER.error("Failed to switch to TakeQuizScreen.");
+//                showAlert("Error", "Unable to display the quiz screen. Please try again.");
+//            }
+//        } else {
+//            LOGGER.error("Loaded controller is not a TakeQuizScreen instance.");
+//            showAlert("Error", "Unexpected screen configuration. Please contact support.");
+//        }
     }
 
     private void displayK53Information() {
