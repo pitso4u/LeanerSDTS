@@ -3,17 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.leanersdts;
+package leanersdts;
 
 /**
- *
- * @author Soetsang
+ * Interface for screens that can be controlled by the ScreenManager.
  */
 public interface ControlledScreen {
-     public void setScreenParent(ScreenManager screenPage);
-     public void runOnScreenChange();
-     /**
+    /**
+     * Sets the screen parent (ScreenManager) for this screen.
+     * @param screenParent The ScreenManager instance
+     */
+    void setScreenParent(ScreenManager screenParent);
+
+    /**
+     * Method called when the screen is changed.
+     */
+    void runOnScreenChange();
+
+    /**
      * Cleanup method to be called when the screen is unloaded.
      */
-   public void cleanup();
+    void cleanup();
 }

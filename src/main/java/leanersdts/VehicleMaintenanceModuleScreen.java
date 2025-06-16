@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.leanersdts;
+package leanersdts;
 
 /**
  *
@@ -17,12 +17,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 public class VehicleMaintenanceModuleScreen implements ControlledScreen {
-    private static final Logger LOGGER = LoggerFactory.getLogger(VehicleMaintenanceModuleScreen.class);
+    private static final Logger LOGGER = Logger.getLogger(VehicleMaintenanceModuleScreen.class.getName());
 
     private ScreenManager screenManager;
 

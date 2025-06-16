@@ -1,4 +1,4 @@
-package main.java.leanersdts;
+package leanersdts;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class DashboardScreen implements ControlledScreen {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DashboardScreen.class);
+    private static final Logger LOGGER = Logger.getLogger(DashboardScreen.class.getName());
 
     private ScreenManager screenManager;
 
@@ -25,33 +25,45 @@ public class DashboardScreen implements ControlledScreen {
     private Button ExitButton;
 
     public void initialize() {
+        LOGGER.info("[DashboardScreen] initialize() called.");
         // Initialization code if needed
         LOGGER.info("DashboardScreen initialized.");
     }
 
     @FXML
     private void handleLearningModulesButtonAction() {
-        screenManager.setScreen("LearningModulesScreen");
+        screenManager.setScreen(LeanerSDTS.LearningModulesScreenID);
     }
 
     @FXML
     private void handleRoadRulesModuleButtonAction() {
-        screenManager.setScreen("RoadRulesModuleScreen");
+        screenManager.setScreen(LeanerSDTS.RoadRulesModuleScreenID);
     }
 
     @FXML
     private void handleVehicleMaintenanceModuleButtonAction() {
-        screenManager.setScreen("VehicleMaintenanceModuleScreen");
+        screenManager.setScreen(LeanerSDTS.VehicleMaintenanceModuleScreenID);
     }
 
     @FXML
     private void handleRiskPerceptionModuleButtonAction() {
-        screenManager.setScreen("RiskPerceptionModuleScreen");
+        screenManager.setScreen(LeanerSDTS.RiskPerceptionModuleScreenID);
     }
 
     @FXML
     private void handleTakeQuizButtonAction() {
-        screenManager.setScreen("QuizScreen");
+        LOGGER.info("[DashboardScreen] handleTakeQuizButtonAction called. Attempting to set screen to TakeQuizScreenID.");
+        screenManager.setScreen(LeanerSDTS.TakeQuizScreenID);
+
+        ControlledScreen controller = screenManager.getController(LeanerSDTS.TakeQuizScreenID);
+        if (controller instanceof TakeQuizScreen) {
+            TakeQuizScreen takeQuizController = (TakeQuizScreen) controller;
+            LOGGER.info("[DashboardScreen] Calling loadQuizDataAndStart() on TakeQuizScreen.");
+            takeQuizController.loadQuizDataAndStart();
+        } else {
+            LOGGER.severe("[DashboardScreen] Failed to get TakeQuizScreen controller or controller is of wrong type.");
+            showAlert("Error", "Could not prepare the quiz. Please try again or restart the application.");
+        }
 //        if (screenManager == null) {
 //            LOGGER.error("ScreenManager is not initialized.");
 //            showAlert("Error", "Application error. Please restart the application.");
@@ -59,30 +71,30 @@ public class DashboardScreen implements ControlledScreen {
 //        }
 //
 //        // Load the TakeQuizScreen if not already loaded
-//        ControlledScreen controller = screenManager.getController(LeanerSDTS.QuizScreenID);
+
 //        if (controller == null) {
-//            LOGGER.info("TakeQuizScreen not loaded. Attempting to load now...");
-//            controller = screenManager.loadScreen(LeanerSDTS.QuizScreenID, LeanerSDTS.QuizScreenFile);
+
+
 //            if (controller == null) {
-//                LOGGER.error("Failed to load TakeQuizScreen.");
+
 //                showAlert("Error", "Quiz screen is not available. Please contact support.");
 //                return;
 //            }
 //        }
 //
-//        // Ensure the loaded screen is a TakeQuizScreen instance
-//        if (controller instanceof TakeQuizScreen) {
-//            TakeQuizScreen takeQuizScreenController = (TakeQuizScreen) controller;
+
+
+
 //            // Start the quiz timer
-//            takeQuizScreenController.startQuizTimer();
+
 //
 //            // Switch to the quiz screen
-//            if (!screenManager.setScreen(LeanerSDTS.QuizScreenID)) {
-//                LOGGER.error("Failed to switch to TakeQuizScreen.");
+
+
 //                showAlert("Error", "Unable to display the quiz screen. Please try again.");
 //            }
 //        } else {
-//            LOGGER.error("Loaded controller is not a TakeQuizScreen instance.");
+
 //            showAlert("Error", "Unexpected screen configuration. Please contact support.");
 //        }
     }
@@ -119,7 +131,7 @@ public class DashboardScreen implements ControlledScreen {
 
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
-        screenManager.setScreen("LoginScreen");
+        screenManager.setScreen(LeanerSDTS.LoginScreenID);
     }
 
     @Override
@@ -139,7 +151,7 @@ public class DashboardScreen implements ControlledScreen {
 
     public void setLearnerName(String learnerName) {
         if (learnerNameLabel == null) {
-            LOGGER.error("Learner name label is not initialized.");
+            LOGGER.severe("Learner name label is not initialized.");
             return;
         }
         learnerNameLabel.setText(learnerName);

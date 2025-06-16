@@ -1,105 +1,117 @@
-package main.java.leanersdts;
+package leanersdts;
 
 import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
+
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Screen;
+
+
 import javafx.stage.Stage;
-import main.java.leanersdts.ScreenManager;
+
 import javafx.scene.layout.StackPane;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
-public class LeanerSDTS extends Application {
 
-    public static String LoginScreenID = "LoginScreen";
-    public static String LoginScreenFile = "/main/resources/leanersdts/LoginScreen.fxml";
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public static String DashboardScreenID = "DashboardScreen";
-    public static String DashboardScreenFile = "/main/resources/leanersdts/DashboardScreen.fxml";
+public class LeanerSDTS extends Application implements ServerDiscovery.ServerDiscoveryListener {
+    private static final Logger logger = LoggerFactory.getLogger(LeanerSDTS.class);
+
+    public static final String LoginScreenID = "login";
+    public static final String LoginScreenFile = "LoginScreen.fxml";
+
+    public static final String DashboardScreenID = "dashboard";
+    public static final String DashboardScreenFile = "DashboardScreen.fxml";
 
     public static String LearningModulesScreenID = "LearningModulesScreen";
-    public static String LearningModulesScreenFile = "/main/resources/leanersdts/LearningModulesScreen.fxml";
+    public static String LearningModulesScreenFile = "LearningModulesScreen.fxml";
     public static String RiskPerceptionModuleScreenID = "RiskPerceptionModuleScreen";
-    public static String RiskPerceptionModuleScreenFile = "/main/resources/leanersdts/RiskPerceptionModuleScreen.fxml";
+    public static String RiskPerceptionModuleScreenFile = "RiskPerceptionModuleScreen.fxml";
     public static String RoadRulesModuleScreenID = "RoadRulesModuleScreen";
-    public static String RoadRulesModuleScreenFile = "/main/resources/leanersdts/RoadRulesModuleScreen.fxml";
+    public static String RoadRulesModuleScreenFile = "RoadRulesModuleScreen.fxml";
     public static String VehicleMaintenanceModuleScreenID = "VehicleMaintenanceModuleScreen";
-    public static String VehicleMaintenanceModuleScreenFile = "/main/resources/leanersdts/VehicleMaintenanceModuleScreen.fxml";
+    public static String VehicleMaintenanceModuleScreenFile = "VehicleMaintenanceModuleScreen.fxml";
     public static String TakeQuizScreenID = "TakeQuizScreen";
-    public static String TakeQuizScreenFile = "/main/resources/leanersdts/TakeQuizScreen.fxml";
-    public static String QuizScreenID = "QuizScreen";
-    public static String QuizScreenFile = "/main/resources/leanersdts/QuizScreen.fxml";
-    public static String ReviewScreenID = "ReviewScreen";
-    public static String ReviewScreenFile = "/main/resources/leanersdts/ReviewScreen.fxml";
+    public static String TakeQuizScreenFile = "TakeQuizScreen.fxml";
+    // Removed unused QuizScreenID
+    // Removed unused QuizScreenFile
+    public static final String ReviewScreenID = "review";
+    public static final String ReviewScreenFile = "ReviewScreen.fxml";
     public static String QuizSummaryScreenID = "QuizSummaryScreen";
-    public static String QuizSummaryScreenFile = "/main/resources/leanersdts/QuizSummaryScreen.fxml";
+    public static String QuizSummaryScreenFile = "QuizSummaryScreen.fxml";
 
-    private ScreenManager mainContainer;
+    public static final String ResultsScreenID = "results";
+    public static final String ResultsScreenFile = "ResultsScreen.fxml";
+
+    private ScreenManager screenManager;
+    private StackPane mainContainer;
+    private ServerDiscovery serverDiscovery;
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            mainContainer = new ScreenManager(primaryStage);
-            // Create instances
-            //        DashboardScreen dashboard = new DashboardScreen();
-            //        TakeQuizScreen takeQuizScreen = new TakeQuizScreen();
-            //
-            //        // Set the existing TakeQuizScreen instance
-            //        dashboard.setTakeQuizScreen(takeQuizScreen);
+            logger.info("Starting application");
+            mainContainer = new StackPane();
+            screenManager = new ScreenManager(mainContainer);
+            
+            // Load the login screen
+                        screenManager.loadScreen(LoginScreenID, LoginScreenFile);
+            screenManager.loadScreen(DashboardScreenID, DashboardScreenFile);
+            screenManager.loadScreen(LearningModulesScreenID, LearningModulesScreenFile);
+            screenManager.loadScreen(RiskPerceptionModuleScreenID, RiskPerceptionModuleScreenFile);
+            screenManager.loadScreen(RoadRulesModuleScreenID, RoadRulesModuleScreenFile);
+            screenManager.loadScreen(VehicleMaintenanceModuleScreenID, VehicleMaintenanceModuleScreenFile);
+            logger.info("[LeanerSDTS] Attempting to load TakeQuizScreen FXML.");
+            boolean takeQuizLoaded = screenManager.loadScreen(TakeQuizScreenID, TakeQuizScreenFile);
+            logger.info("[LeanerSDTS] Finished loading TakeQuizScreen FXML. Success: " + takeQuizLoaded);
+            screenManager.loadScreen(ReviewScreenID, ReviewScreenFile); // Added ReviewScreen loading
+            screenManager.loadScreen(ResultsScreenID, ResultsScreenFile); // Added ResultsScreen loading
+            logger.info("[LeanerSDTS] Setting initial screen to LoginScreen.");
+            screenManager.setScreen(LoginScreenID);
 
-            // Load other screens
-
-            mainContainer.loadScreen(LoginScreenID, LoginScreenFile);
-            mainContainer.loadScreen(DashboardScreenID, DashboardScreenFile);
-            mainContainer.loadScreen(LearningModulesScreenID, LearningModulesScreenFile);
-            mainContainer.loadScreen(RiskPerceptionModuleScreenID, RiskPerceptionModuleScreenFile);
-            mainContainer.loadScreen(RoadRulesModuleScreenID, RoadRulesModuleScreenFile);
-            mainContainer.loadScreen(ReviewScreenID, ReviewScreenFile);
-            mainContainer.loadScreen(VehicleMaintenanceModuleScreenID, VehicleMaintenanceModuleScreenFile);
-            mainContainer.loadScreen(TakeQuizScreenID, TakeQuizScreenFile); // Ensure this line is present
-            mainContainer.loadScreen(QuizScreenID, QuizScreenFile); // Ensure this line is present
-            mainContainer.loadScreen(QuizSummaryScreenID, QuizSummaryScreenFile);
-
-            // Set the initial screen (e.g., Login screen)
-            mainContainer.setScreen(LeanerSDTS.QuizScreenID);
-
-            // Link your CSS file
-            // Link your CSS file
-            String cssFilePath = getClass().getResource("customstyles.css").toExternalForm();
-            mainContainer.getStylesheets().add(cssFilePath);
-            // Load the icon
-            //        Image icon = new Image(getClass().getResourceAsStream("../Images/OnlyHeadbakubungClear.ico"));
-
-            // Set the icon for the primary stage
-            //        primaryStage.getIcons().add(icon);
-
-            // Set the stage to full screen
-            primaryStage.setFullScreen(true);
-            mainContainer.setStyle("-fx-background-color: #ffed4b;");
-            // Get the primary screen
-            Screen screen = Screen.getPrimary();
-            Rectangle2D bounds = screen.getVisualBounds();
-
-            // Calculate the desired scene size based on screen resolution
-            double screenWidth = bounds.getWidth();
-            double screenHeight = bounds.getHeight();
-            double sceneWidth = screenWidth * 0.8; // 80% of screen width
-            double sceneHeight = screenHeight * 0.8; // 80% of screen height
-            System.out.println("sceneWidth:" + sceneWidth);
-            System.out.println("sceneHeight:" + sceneHeight);
-
-            primaryStage.setScene(new Scene(mainContainer, sceneWidth, sceneHeight));
-            primaryStage.setTitle("SmartDrive Training Suite");
+            Scene scene = new Scene(mainContainer);
+            primaryStage.setTitle("LeanerSDTS");
+            primaryStage.setScene(scene);
             primaryStage.show();
+
+            logger.info("[LeanerSDTS] Preparing to start server discovery.");
+            // Start server discovery
+            serverDiscovery = new ServerDiscovery(this);
+            serverDiscovery.startDiscovery();
+            logger.info("[LeanerSDTS] Server discovery process initiated.");
+            
+            logger.info("Application started successfully, discovery initiated.");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Failed to start application", e);
         }
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void onServerDiscovered(String ipAddress, int port) {
+        String discoveredBaseUrl = "http://" + ipAddress + ":" + port + "/";
+        ServerConnector.setBaseUrl(discoveredBaseUrl);
+        logger.info("[LeanerSDTS] onServerDiscovered: ServerConnector.baseUrl set to: " + discoveredBaseUrl);
+        logger.info("Server discovered: " + discoveredBaseUrl);
+        // Optionally, trigger UI update or enable login button here
+    }
+
+    @Override
+    public void onDiscoveryError(String message) {
+        logger.error("[LeanerSDTS] onDiscoveryError: " + message);
+        logger.error("Server discovery error: " + message);
+        // Optionally, show an alert to the user
+        // e.g., AlertUtils.showError("Server Not Found", "Could not connect to the server. Please ensure the server is running and on the same network.");
+    }
+
+    @Override
+    public void stop() throws Exception {
+        if (serverDiscovery != null) {
+            serverDiscovery.stopDiscovery();
+        }
+        super.stop();
     }
 }
 

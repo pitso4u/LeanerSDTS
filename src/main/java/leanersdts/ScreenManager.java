@@ -1,11 +1,11 @@
-package main.java.leanersdts;
+package leanersdts;
 
 /**
  *
  * @author pitso
  */
-import java.io.IOException;
-import javafx.animation.Interpolator;
+
+
 import javafx.scene.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,48 +14,28 @@ import java.util.Deque;
 import java.util.LinkedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.VBox;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
+
+import javafx.scene.layout.StackPane;
+import java.util.Map;
 
 public class ScreenManager extends VBox implements ControlledScreen {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ScreenManager.class);
-    private HashMap<String, Node> screens = new HashMap<>();
-    private HashMap<String, ControlledScreen> controllers = new HashMap<>();
-    private Deque<String> screenHistory = new LinkedList<>();
-    private String currentScreen;
-    private Stage primaryStage;
+    private static final Logger logger = LoggerFactory.getLogger(ScreenManager.class);
+    private final Map<String, Node> screens = new HashMap<>();
+    private final Map<String, ControlledScreen> controllers = new HashMap<>();
+    private final Deque<String> screenHistory = new LinkedList<>();
+    private final StackPane mainContainer;
+    
 
-    public ScreenManager(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
-    // Modified loadScreen method to return the controller
-    public ControlledScreen loadScreen(String screenID, String screenFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(screenFile));
-            Parent root = loader.load();
-
-            ControlledScreen controller = loader.getController();
-            if (controller == null) {
-                LOGGER.error("Controller for screen '{}' is null. Check FXML file: {}", screenID, screenFile);
-                return null;
-            }
-
-            controller.setScreenParent(this);
-            screens.put(screenID, root);
-            controllers.put(screenID, controller);
-
-            return controller;
-        } catch (Exception e) {
-            LOGGER.error("Failed to load screen '{}' from file '{}'. Cause: {}", screenID, screenFile, e.getMessage(), e);
-            return null;
-        }
+    public ScreenManager(StackPane mainContainer) {
+        this.mainContainer = mainContainer;
     }
 
     public void addScreen(String name, Node screen) {
+        logger.info("Adding screen: " + name);
         screens.put(name, screen);
     }
 
@@ -67,112 +47,106 @@ public class ScreenManager extends VBox implements ControlledScreen {
         return controllers.get(name);
     }
 
-    public void addController(String name, ControlledScreen controlledScreen) {
-        controllers.put(name, controlledScreen);
-    }
+    public boolean loadScreen(String name, String resource) {
+        try {
+            logger.info("Loading screen: {} from file: {}", name, resource);
+            Node loadScreenNode;
+            ControlledScreen myScreenController;
 
-    public void printScreenMaps() {
-        LOGGER.info("Screens map: " + screens.keySet());
-        LOGGER.info("Controllers map: " + controllers.keySet());
-    }
+            // Special handling for screens that are fx:root components and load their own FXML
+            if ("review".equals(name)) { // Add other fx:root screens here if necessary
+                // Assuming ReviewScreen's constructor now loads its FXML and sets itself as root/controller
+                ReviewScreen reviewScreenInstance = new ReviewScreen(); 
+                loadScreenNode = reviewScreenInstance;       // The instance itself is the Node
+                myScreenController = reviewScreenInstance;   // And also the controller
+            } else {
+                // Standard FXML loading for fx:controller based screens
+                FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
+                loadScreenNode = myLoader.load();
+                myScreenController = myLoader.getController();
+                if (myScreenController == null) {
+                    // This might happen if the FXML defines an fx:root but we didn't handle it above,
+                    // and the root class itself is the controller but wasn't set on the loader.
+                    // Or if fx:controller is missing.
+                    logger.warn("Controller not found via getController() for screen: {}. Attempting to use root node as controller.", name);
+                    if (loadScreenNode instanceof ControlledScreen) {
+                        myScreenController = (ControlledScreen) loadScreenNode;
+                        logger.info("Successfully used root node as controller for screen: {}", name);
+                    } else {
+                        logger.error("Failed to obtain controller for screen: {}. Root node is not a ControlledScreen.", name);
+                        return false; // Cannot proceed without a controller
+                    }
+                }
+            }
 
-    public boolean setScreen(final String name) {
-        if (currentScreen != null) {
-            screenHistory.add(currentScreen);
+            myScreenController.setScreenParent(this);
+            addScreen(name, loadScreenNode);
+            controllers.put(name, myScreenController); // Store the controller
+            logger.info("Successfully loaded screen: {}", name);
+            return true;
+        } catch (Exception e) {
+            logger.error("Failed to load screen: {}", name, e);
+            return false;
         }
+    }
 
-        Node screenNode = screens.get(name);
-        if (screenNode != null) {
-            getChildren().clear();
-            getChildren().add(screenNode);
-            currentScreen = name;
-            LOGGER.info("Screen set successfully: " + name);
+    public boolean setScreen(String name) {
+        if (screens.get(name) != null) {
+            if (!mainContainer.getChildren().isEmpty()) {
+                mainContainer.getChildren().remove(0);
+                mainContainer.getChildren().add(0, screens.get(name));
+            } else {
+                mainContainer.getChildren().add(screens.get(name));
+            }
+            screenHistory.clear();
+            screens.keySet().forEach(screenHistory::add);
+            logger.info("Screen set successfully: {}", name);
             return true;
         } else {
-            LOGGER.error("Screen not found: " + name);
-            AlertMaker.showErrorMessage("Screen Not Loaded", "The requested screen (" + name + ") has not been loaded.");
+            logger.error("Screen not found: {}", name);
+            //AlertMaker.showErrorMessage("Screen Not Loaded", "The requested screen (" + name + ") has not been loaded.");
             return false;
         }
     }
 
     @Override
     public void runOnScreenChange() {
-        // Any logic you want to run when the screen changes
+        logger.info("Running on screen change");
     }
 
     @Override
     public void setScreenParent(ScreenManager screenPage) {
-        // This method is required by the interface but not used for ScreenManager
+        logger.info("Setting screen parent");
     }
 
     @Override
     public void cleanup() {
-        // Cleanup logic for ScreenManager, if needed
+        logger.info("Cleaning up ScreenManager");
         screens.clear();
         controllers.clear();
         screenHistory.clear();
     }
 
-    public boolean unloadCurrentScreen() {
-        if (currentScreen != null) {
-            // Get the controller for the current screen
-            ControlledScreen controller = controllers.get(currentScreen);
-            if (controller != null) {
-                controller.cleanup();
-            }
-
-            // Remove the current screen from the screens map
-            screens.remove(currentScreen);
-
-            // Clear the current screen
-            getChildren().clear();
-
-            // Set current screen to null
-            currentScreen = null;
-
-            return true;
-        } else {
-            LOGGER.error("No current screen to unload!");
-            // Handle the error appropriately (e.g., show an error message)
-            return false;
-        }
-    }
-
     public boolean unloadScreen(String name) {
-        ControlledScreen controller = controllers.remove(name);
-        if (controller != null) {
-            controller.cleanup(); // Add a cleanup method to your ControlledScreen interface
-        }
-
         if (screens.remove(name) == null) {
-            LOGGER.error("Screen does not exist!!");
-            // Handle the error appropriately (e.g., show an error message)
+            logger.warn("Screen to unload did not exist: {}", name);
             return false;
         } else {
+            controllers.remove(name);
+            logger.info("Successfully unloaded screen: {}", name);
             return true;
         }
     }
 
     public void goBack() {
         if (!screenHistory.isEmpty()) {
-            // Remove the current screen from the screen history
             String previousScreen = screenHistory.pollLast();
-
-            // Set the previous screen
+            logger.info("Going back to screen: {}", previousScreen);
             setScreen(previousScreen);
-
-            // Clear the screen history
-            screenHistory.clear();
-
-            // Add screens to history again up to the current screen
-            screens.keySet().forEach(screenHistory::add);
         } else {
-            // Handle the case where there is no previous screen (optional)
+            logger.info("No previous screen to go back to");
         }
     }
 
-    private static class AnimateFXInterpolator {
-
-        public static final Interpolator EASE = Interpolator.SPLINE(0.25, 0.1, 0.25, 1);
-    }
+    
 }

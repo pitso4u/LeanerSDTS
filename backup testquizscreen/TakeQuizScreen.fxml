@@ -82,6 +82,7 @@
                                         <HBox alignment="TOP_RIGHT" prefHeight="62.0" prefWidth="802.0" style="-fx-spacing: 20;">
                                             <children>
                                                 <Button fx:id="previousButton" onAction="#handlePreviousButtonAction" prefHeight="65.0" prefWidth="225.0" text="Previous Question" />
+                                                
                                                 <Button fx:id="skipButton" onAction="#handleSkipButtonAction" prefHeight="65.0" prefWidth="200.0" text="Skip" />
                                                 <Button fx:id="reviewButton" onAction="#handleReviewButtonAction" prefHeight="65.0" prefWidth="200.0" text="Review" />
                                             </children>

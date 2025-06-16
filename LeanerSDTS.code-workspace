@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../OneDrive/Desktop/SmartDriveSuite/Server"
+		},
+		{
+			"path": "../../StudioProjects/BakubungLearnersTest"
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.windows": {
+			"JAVA_HOME": "c:\\Program Files\\Java\\jdk-17",
+			"PATH": "c:\\Program Files\\Java\\jdk-17\\bin;${env:PATH}"
+		}
+	}
+}

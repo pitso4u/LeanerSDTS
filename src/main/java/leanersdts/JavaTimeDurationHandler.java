@@ -1,4 +1,4 @@
-package main.java.leanersdts;
+package leanersdts;
 
 import java.time.Duration;
 import java.time.Instant;

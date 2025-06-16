@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<VBox prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.leanersdts.ReviewScreenController">
-    <children>
-        <VBox spacing="10" padding="20 20 20 20">
-            <Label text="Review Your Answers" style="-fx-font-size: 20;" />
-            <VBox fx:id="reviewContainer" spacing="5"></VBox>
-            <Button text="Submit Answers" onAction="#handleSubmitButtonAction" />
-            <Button text="Back to Quiz" onAction="#handleBackToQuizButtonAction" />
-        </VBox>
-    </children>
-</VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+<?import java.lang.String?>
+
+<fx:root type="leanersdts.ReviewScreen" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="leanersdts.ReviewScreenController">
+    <stylesheets>
+        <String fx:value="/leanersdts/customstyles.css" />
+    </stylesheets>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <VBox spacing="15">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="questionNumberLabel" styleClass="header-label" text="Question X of Y" />
+            <HBox HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="showIncorrectOnlyCheckBox" onAction="#handleFilterAction" text="Show Incorrect Only" />
+        </HBox>
+
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+            <VBox fx:id="reviewContainer" spacing="15" style="-fx-padding: 10;">
+                <TextFlow fx:id="questionTextFlow" />
+                <ImageView fx:id="questionImageView" fitHeight="200.0" fitWidth="300.0" preserveRatio="true" />
+                <VBox fx:id="optionsContainer" spacing="10" />
+            </VBox>
+        </ScrollPane>
+
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Text Size:" />
+            <Slider fx:id="textSizeSlider" min="12" max="24" value="14" blockIncrement="1" />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="20">
+            <Button fx:id="backButton" onAction="#handleBackAction" text="Back to Summary" />
+            <Button fx:id="previousButton" onAction="#handlePreviousAction" text="Previous" />
+            <Button fx:id="nextButton" onAction="#handleNextAction" text="Next" />
+            <Button fx:id="finalSubmitButton" onAction="#handleFinalSubmitAction" text="Final Submit" styleClass="success-button" />
+        </HBox>
+    </VBox>
+</fx:root>

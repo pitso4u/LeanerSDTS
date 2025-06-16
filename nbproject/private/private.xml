@@ -3,20 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/LoginScreen.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/RoadRulesModuleScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/TakeQuizScreen.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/LeanerSDTS.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/DashboardScreen.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/QuizQuestion.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/DashboardScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/VehicleMaintenanceModuleScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/QuizSummaryScreen.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/RiskPerceptionModuleScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/java/leanersdts/QuizScreen.java</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/TakeQuizScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/LoginScreen.fxml</file>
-            <file>file:/C:/Users/sam/OneDrive/Documents/NetBeansProjects/LeanerSDTS/src/main/resources/leanersdts/LearningModulesScreen.fxml</file>
+            <file>file:/C:/Users/Soets/GitHub/LeanerSDTS/src/main/java/leanersdts/AdjustOptionsButtonFontSize.java</file>
+            <file>file:/C:/Users/Soets/GitHub/LeanerSDTS/LeanerSDTS.iml</file>
+            <file>file:/C:/Users/Soets/GitHub/LeanerSDTS/src/main/java/leanersdts/ControlQuestion.java</file>
         </group>
     </open-files>
 </project-private>

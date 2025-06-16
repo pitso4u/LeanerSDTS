@@ -3,40 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.leanersdts;
+package leanersdts;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author pitso
  */
 public class LoginData {
-    private int learner_id;
-   private String username;
+    private static LoginData instance;
+    private int learnerId;
+    private String username;
     private String password;
-    private String full_name;
-   private LocalDate date_of_birth;
+    private String fullName;
+    private Date dateOfBirth;
     private String email;
 
-    public LoginData() {
+    private LoginData() {}
+
+    public static LoginData getInstance() {
+        if (instance == null) {
+            instance = new LoginData();
+        }
+        return instance;
     }
 
-    public LoginData(int learner_id, String username, String password, String full_name, LocalDate date_of_birth, String email) {
-        this.learner_id = learner_id;
+    public LoginData(int learnerId, String username, String password, String fullName, Date dateOfBirth, String email) {
+        this.learnerId = learnerId;
         this.username = username;
         this.password = password;
-        this.full_name = full_name;
-        this.date_of_birth = date_of_birth;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
         this.email = email;
     }
 
-    public int getLearner_id() {
-        return learner_id;
+    public int getLearnerId() {
+        return learnerId;
     }
 
-    public void setLearner_id(int learner_id) {
-        this.learner_id = learner_id;
+    public void setLearnerId(int learnerId) {
+        this.learnerId = learnerId;
     }
 
     public String getUsername() {
@@ -55,20 +62,20 @@ public class LoginData {
         this.password = password;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public LocalDate getDate_of_birth() {
-        return date_of_birth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(LocalDate date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {
@@ -78,6 +85,4 @@ public class LoginData {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
 }

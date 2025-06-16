@@ -1,329 +1,348 @@
-package main.java.leanersdts;
+package leanersdts;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.temporal.ChronoUnit;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.scene.control.Dialog;
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
+import leanersdts.ReviewScreen;
+import javafx.scene.Node;
 
 public class TakeQuizScreen implements ControlledScreen {
+
+    private static final Logger LOGGER = Logger.getLogger(TakeQuizScreen.class.getName());
+    private static final long QUIZ_DURATION_MINUTES = 60;
+
+    // FXML Components from the new design
+    @FXML
+    private ProgressBar progressBar;
     @FXML
     private Label timerLabel;
     @FXML
     private Text questionLabel;
-    private VBox optionsContainer; // Ensure this is properly annotated
+    @FXML
+    private ImageView questionImageView;
+    @FXML
+    private VBox optionsContainer;
+    @FXML
+    private ToggleGroup optionsGroup;
     @FXML
     private Button previousButton;
+    @FXML
+    private Button nextButton;
     @FXML
     private Button skipButton;
     @FXML
     private Button reviewButton;
-    @FXML
-    private Button option1Button;
-    @FXML
-    private Button option2Button;
-    @FXML
-    private Button option3Button;
-    @FXML
-    private Button option4Button;
-    @FXML
-    private ImageView questionImageView;
 
     private ScreenManager screenManager;
     private List<QuizQuestion> shuffledQuestions;
+    private List<Integer> selectedAnswers;
     private int currentQuestionIndex = 0;
-    private int correctAnswersCount = 0;
-    private int totalQuestions;
+    private boolean quizDataLoaded = false;
+
     private Timeline quizTimer;
-    private Instant quizStartTime;
-    private Map<Integer, String> answerStatusPerQuestion = new HashMap<>();
-    private List<String> incorrectAnswersList = new ArrayList<>();
-    private Map<Integer, java.time.Duration> timeTakenPerQuestion = new HashMap<>();
-    private LoginData loginData;
-    private List<Integer> selectedAnswers = new ArrayList<>();
-
-    public void initialize() {
-        System.out.println("Initializing TakeQuizScreen"); // Debug print
-        QuizQuestionDatabase database = new QuizQuestionDatabase();
-        shuffledQuestions = database.getRandomQuestions();
-        
-        if (shuffledQuestions.isEmpty()) {
-            showErrorAlert("Error", "No Questions Available");
-            return;
-        }
-        
-        // Initialize selectedAnswers with -1 for each question
-        for (int i = 0; i < shuffledQuestions.size(); i++) {
-            selectedAnswers.add(-1);
-        }
-        
-        currentQuestionIndex = 0;
-        initializeUI();
-        startQuizTimer();
-        loadQuestion(currentQuestionIndex);
-    }
-
-    private void initializeUI() {
-        // Initialize UI components
-        previousButton.setDisable(true);
-        skipButton.setDisable(false);
-        reviewButton.setDisable(false);
-        timerLabel.setText("Time Remaining: 60:00");
-    }
-
-    private void initializeShuffledQuestions() {
-        QuizQuestionDatabase quizQuestionDatabase = new QuizQuestionDatabase();
-        shuffledQuestions = quizQuestionDatabase.getRandomQuestions();
-    }
-
-    public void startQuizTimer() {
-        quizStartTime = Instant.now();
-        quizTimer = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer()));
-        quizTimer.setCycleCount(Timeline.INDEFINITE);
-        quizTimer.play();
-    }
-
-    public void setLoginData(LoginData loginData) {
-        this.loginData = loginData;
-    }
-    
-    private void loadQuestion(int index) {
-        if (index < 0 || index >= shuffledQuestions.size()) {
-            showErrorAlert("Error", "Invalid question index.");
-            return;
-        }
-
-        QuizQuestion question = shuffledQuestions.get(index);
-        questionLabel.setText(question.getQuestionText());
-        optionsContainer.getChildren().clear();
-
-        ToggleGroup group = new ToggleGroup();
-        String[] options = question.getOptions();
-        for (int i = 0; i < options.length; i++) {
-            RadioButton optionButton = new RadioButton(options[i]);
-            optionButton.setToggleGroup(group);
-            int optionIndex = i;
-            optionButton.setOnAction(event -> {
-                try {
-                    handleOptionSelected(optionIndex);
-                } catch (IOException ex) {
-                    Logger.getLogger(TakeQuizScreen.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-            optionsContainer.getChildren().add(optionButton);
-        }
-    }
-
-    private void handleOptionSelected(int selectedOptionIndex) throws IOException {
-        if (shuffledQuestions == null || shuffledQuestions.isEmpty()) {
-            showErrorAlert("Error", "No questions available.");
-            return;
-        }
-
-        QuizQuestion currentQuestion = shuffledQuestions.get(currentQuestionIndex);
-        currentQuestion.setUserAnswerIndex(selectedOptionIndex);
-        selectedAnswers.set(currentQuestionIndex, selectedOptionIndex);
-
-        // Proceed to the next question or submit the quiz
-        if (currentQuestionIndex < shuffledQuestions.size() - 1) {
-            currentQuestionIndex++;
-            loadQuestion(currentQuestionIndex);
-        } else {
-            submitQuiz();
-        }
-    }
-
-    private void updateNavigationButtons() {
-        previousButton.setDisable(currentQuestionIndex == 0);
-        skipButton.setDisable(currentQuestionIndex == shuffledQuestions.size() - 1);
-        reviewButton.setDisable(false); // Enable review always for now
-    }
-
-    private void submitQuiz() throws IOException {
-        quizTimer.stop();
-
-        // Load the screen and get the controller directly
-        ReviewScreenController reviewController = (ReviewScreenController) screenManager.loadScreen(LeanerSDTS.ReviewScreenID, LeanerSDTS.ReviewScreenFile);
-
-        if (reviewController != null) {
-            reviewController.setData(shuffledQuestions, new ArrayList<>(selectedAnswers));
-            screenManager.setScreen(LeanerSDTS.ReviewScreenID);
-        } else {
-            showErrorAlert("Error", "Could not load review screen");
-        }
-    }
-    @FXML
-    private void handleSkipButtonAction() throws IOException {
-        answerStatusPerQuestion.put(currentQuestionIndex, "Skipped");
-        
-        // Directly handle the logic here
-        if (currentQuestionIndex < shuffledQuestions.size() - 1) {
-            currentQuestionIndex++;
-            loadQuestion(currentQuestionIndex);
-        } else {
-            submitQuiz(); // Show summary if it's the last question
-        }
-    }
-
-    @FXML
-    private void handlePreviousButtonAction() {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            loadQuestion(currentQuestionIndex);
-        }
-    }
-
-    private void resetTimerAndShowQuizSummary() {
-        quizTimer.stop();
-        showQuizSummary();
-    }
-
-    private void showQuizSummary() {
-        StringBuilder summary = new StringBuilder();
-        summary.append("Quiz Completed!\n");
-        summary.append("Correct Answers: ").append(correctAnswersCount).append(" / ").append(totalQuestions).append("\n");
-        summary.append("Time Taken: ").append(JavaTimeDurationHandler.formatDuration(JavaTimeDurationHandler.between(quizStartTime, Instant.now()))).append("\n");
-
-        if (!incorrectAnswersList.isEmpty()) {
-            summary.append("\nIncorrect Answers Review:\n");
-            for (String incorrectAnswer : incorrectAnswersList) {
-                summary.append(incorrectAnswer);
-            }
-        }
-
-        showAlert(summary.toString());
-    }
-
-    private void showAlert(String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Quiz Summary");
-    alert.setContentText(message);
-    alert.showAndWait();
-}
-
-private void reviewAnswers() {
-    // Create a dialog to show the review of answers
-    Dialog<Void> reviewDialog = new Dialog<>();
-    reviewDialog.setTitle("Review Your Answers");
-
-    VBox reviewContent = new VBox(10);
-    reviewContent.setPadding(new Insets(10));
-
-    for (int i = 0; i < shuffledQuestions.size(); i++) {
-        QuizQuestion question = shuffledQuestions.get(i);
-        String answerText = "No answer selected"; // Default text
-
-        // Check the type of question and retrieve the selected answer
-        if (question instanceof SignQuestion) {
-            SignQuestion signQuestion = (SignQuestion) question;
-            if (signQuestion.getUserAnswerIndex() != -1) {
-                answerText = "Your answer: " + signQuestion.getOptions()[signQuestion.getUserAnswerIndex()];
-            }
-        } else if (question instanceof RuleQuestion) {
-            RuleQuestion ruleQuestion = (RuleQuestion) question;
-            if (ruleQuestion.getUserAnswerIndex() != -1) {
-                answerText = "Your answer: " + ruleQuestion.getOptions()[ruleQuestion.getUserAnswerIndex()];
-            }
-        } else if (question instanceof ControlQuestion) {
-            ControlQuestion controlQuestion = (ControlQuestion) question;
-            if (controlQuestion.getUserAnswerIndex() != -1) {
-                answerText = "Your answer: " + controlQuestion.getOptions()[controlQuestion.getUserAnswerIndex()];
-            }
-        }
-
-        Label questionLabel = new Label((i + 1) + ". " + question.getQuestionText() + "\n" + answerText);
-        reviewContent.getChildren().add(questionLabel);
-    }
-
-    reviewDialog.getDialogPane().setContent(reviewContent);
-
-    ButtonType closeButton = new ButtonType("Close", ButtonBar.ButtonData.OK_DONE);
-    reviewDialog.getDialogPane().getButtonTypes().add(closeButton);
-
-    reviewDialog.showAndWait();
-}
-
-    private void updateTimer() {
-        java.time.Duration elapsedTime = JavaTimeDurationHandler.between(quizStartTime, Instant.now());
-        timerLabel.setText(JavaTimeDurationHandler.formatDuration(elapsedTime));
-    }
-
-    @FXML
-    private void handleBackButtonAction(ActionEvent event) {
-        screenManager.setScreen(LeanerSDTS.DashboardScreenID);
-    }
-
-    @FXML
-    private void handleReviewButtonAction(ActionEvent event) {
-        reviewAnswers();
-    }
+    private Instant quizEndTime;
+    private long quizStartTimeMillis;
+    private ReviewScreenController reviewController;
 
     @Override
     public void setScreenParent(ScreenManager screenParent) {
         this.screenManager = screenParent;
+        // reviewController will be initialized lazily in submitQuiz()
+        LOGGER.info("[TakeQuizScreen setScreenParent] ScreenManager set. ReviewController will be fetched on demand.");
     }
 
-    @Override
-    public void runOnScreenChange() {
-        // Code to run when the screen is changed, if needed
+    @FXML
+    public void initialize() {
+        LOGGER.info("[TakeQuizScreen] Initializing new quiz screen UI.");
+        // Set initial state for new UI components
+        progressBar.setProgress(0.0);
+        timerLabel.setText("--:--");
+        questionLabel.setText("Loading quiz, please wait...");
+        optionsContainer.getChildren().clear();
+        setNavButtonsDisable(true); // Disable all navigation buttons initially
     }
 
-    @Override
-    public void cleanup() {
-        // Cleanup code, if needed
-    }
+    public void loadQuizDataAndStart() {
+        if (quizDataLoaded) {
+            LOGGER.info("[TakeQuizScreen] Quiz data already loaded. Resuming quiz.");
+            return; // Avoid reloading data
+        }
 
-    private void handleNextButtonAction() {
-        if (currentQuestionIndex < shuffledQuestions.size() - 1) {
-            currentQuestionIndex++;
+        LOGGER.info("[TakeQuizScreen] Loading quiz data and starting quiz.");
+        try {
+            QuizQuestionDatabase database = new QuizQuestionDatabase();
+            shuffledQuestions = database.getRandomQuestions();
+
+            if (shuffledQuestions == null || shuffledQuestions.isEmpty()) {
+                LOGGER.severe("[TakeQuizScreen] No questions were loaded from the server.");
+                showErrorAlert("Quiz Error", "Could not load any questions. Please try again later.");
+                return;
+            }
+
+            // Initialize selectedAnswers list with -1 (unanswered)
+            selectedAnswers = new ArrayList<>();
+            for (int i = 0; i < shuffledQuestions.size(); i++) {
+                selectedAnswers.add(-1);
+            }
+
+            currentQuestionIndex = 0;
             loadQuestion(currentQuestionIndex);
+            startQuizTimer(); // Defined below
+            updateNavigationButtonStates();
+            quizDataLoaded = true;
+
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "[TakeQuizScreen] A critical error occurred while loading the quiz.", e);
+            AlertMaker.showErrorMessage("Fatal Quiz Error", "An unexpected error occurred: " + e.getMessage()); // Corrected call
+            quizDataLoaded = false;
         }
     }
 
-    private void handleSubmitButtonAction() throws IOException {
+    private void loadQuestion(int index) {
+        if (index < 0 || index >= shuffledQuestions.size())
+            return;
+
+        QuizQuestion question = shuffledQuestions.get(index);
+        questionLabel.setText(question.getQuestion());
+
+        // Handle image visibility
+        String imageUrl = question.getImageUrl();
+        LOGGER.info("[TakeQuizScreen] Attempting to load image. URL received: " + imageUrl);
+
+        if (question.hasImage() && imageUrl != null && !imageUrl.isEmpty()) {
+            try {
+                Image questionImage = new Image(imageUrl, true); // Load in background
+
+                questionImage.errorProperty().addListener((observable, oldValue, newValue) -> {
+                    if (newValue) {
+                        LOGGER.log(Level.SEVERE, "Error loading image from URL: " + imageUrl,
+                                questionImage.getException());
+                    }
+                });
+
+                questionImageView.setImage(questionImage);
+                questionImageView.setVisible(true);
+                // Explicitly set fit height to preserve aspect ratio, or manage layout better
+                questionImageView.setFitHeight(150); // Example height, adjust as needed
+                questionImageView.setPreserveRatio(true);
+
+                LOGGER.info("[TakeQuizScreen] Image loading initiated for URL: " + imageUrl);
+
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE,
+                        "A critical exception occurred while creating the Image object for URL: " + imageUrl, e);
+                questionImageView.setImage(null);
+                questionImageView.setVisible(false);
+            }
+        } else {
+            LOGGER.info("[TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.");
+            questionImageView.setImage(null);
+            questionImageView.setVisible(false);
+        }
+
+        // Dynamically create and add styled ToggleButtons for options
+        optionsContainer.getChildren().clear();
+        optionsGroup.getToggles().clear();
+
+        String[] options = question.getOptions();
+        for (int i = 0; i < options.length; i++) {
+            ToggleButton optionButton = new ToggleButton(options[i]);
+            optionButton.setToggleGroup(optionsGroup);
+            optionButton.getStyleClass().add("option-toggle-button");
+            optionButton.setWrapText(true); // Ensure long text wraps
+            optionButton.setPrefHeight(Control.USE_COMPUTED_SIZE); // Let the button determine its own height
+            optionButton.setUserData(i); // Store the option's original index
+            optionsContainer.getChildren().add(optionButton);
+        }
+
+        // Restore previously selected answer for this question
+        progressBar.setProgress((double) (index + 1) / shuffledQuestions.size()); // Moved here
+        int previousAnswer = selectedAnswers.get(index);
+        if (previousAnswer != -1) {
+            for (Toggle toggle : optionsGroup.getToggles()) {
+                if ((Integer) toggle.getUserData() == previousAnswer) {
+                    toggle.setSelected(true);
+                    break;
+                }
+            }
+        }
+
+        // Update progress bar
+        progressBar.setProgress((double) (index + 1) / shuffledQuestions.size());
+    }
+
+    private void recordAnswer() {
+        Toggle selectedToggle = optionsGroup.getSelectedToggle();
+        if (selectedToggle != null) {
+            int selectedIndex = (Integer) selectedToggle.getUserData();
+            selectedAnswers.set(currentQuestionIndex, selectedIndex);
+        } else {
+            selectedAnswers.set(currentQuestionIndex, -1); // No answer selected
+        }
+    }
+
+    @FXML
+    private void handleNextButtonAction(ActionEvent event) {
+        recordAnswer();
+        if (currentQuestionIndex < shuffledQuestions.size() - 1) {
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+            updateNavigationButtonStates();
+        }
+    }
+
+    @FXML
+    private void handlePreviousButtonAction(ActionEvent event) {
+        recordAnswer();
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            loadQuestion(currentQuestionIndex);
+            updateNavigationButtonStates();
+        }
+    }
+
+    @FXML
+    private void handleSkipButtonAction(ActionEvent event) {
+        selectedAnswers.set(currentQuestionIndex, -1); // Mark as skipped
+        if (currentQuestionIndex < shuffledQuestions.size() - 1) {
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+            updateNavigationButtonStates();
+        }
+    }
+
+    @FXML
+    private void handleReviewButtonAction(ActionEvent event) {
+        // This button acts as the final submit.
         submitQuiz();
     }
 
-    private void showQuizResults(double score, int totalCorrect) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Quiz Results");
-        alert.setHeaderText("Quiz Complete!");
-        alert.setContentText(String.format("You scored %.2f%%\nCorrect answers: %d/%d", 
-            score, totalCorrect, shuffledQuestions.size()));
-        alert.showAndWait();
-        
-        screenManager.setScreen(LeanerSDTS.QuizSummaryScreenID);
+    private void submitQuiz() {
+        LOGGER.info("[TakeQuizScreen submitQuiz] Method started.");
+
+        // Lazy initialization of reviewController
+        if (this.reviewController == null) {
+            LOGGER.info("[TakeQuizScreen submitQuiz] Attempting to lazily initialize ReviewScreenController.");
+            if (screenManager == null) {
+                LOGGER.severe("[TakeQuizScreen submitQuiz] ScreenManager is null. Cannot get ReviewScreenController.");
+                AlertMaker.showErrorMessage("Critical Error", "ScreenManager not available. Cannot proceed to review."); // Corrected call
+                return;
+            }
+            Node reviewScreenNode = screenManager.getScreen(LeanerSDTS.ReviewScreenID);
+            LOGGER.info("[TakeQuizScreen submitQuiz] screenManager.getScreen(ReviewScreenID) returned: " + (reviewScreenNode == null ? "null" : reviewScreenNode.getClass().getName()));
+            if (reviewScreenNode instanceof ReviewScreen) {
+                ReviewScreen reviewScreen = (ReviewScreen) reviewScreenNode;
+                this.reviewController = reviewScreen.getControllerInstance();
+                if (this.reviewController == null) {
+                    LOGGER.severe("[TakeQuizScreen submitQuiz] Lazily fetched ReviewScreen component returned a null controller instance.");
+                } else {
+                    LOGGER.info("[TakeQuizScreen submitQuiz] Successfully lazily initialized ReviewScreenController.");
+                }
+            } else {
+                LOGGER.severe("[TakeQuizScreen submitQuiz] Could not obtain ReviewScreen component for lazy initialization. Expected leanersdts.ReviewScreen, Got: " + (reviewScreenNode != null ? reviewScreenNode.getClass().getName() : "null"));
+            }
+        }
+
+        if (quizTimer != null) {
+            quizTimer.stop();
+        }
+        long timeTakenMillis = System.currentTimeMillis() - quizStartTimeMillis; // Calculate time taken
+        LOGGER.info("[TakeQuizScreen submitQuiz] Quiz timer stopped. Time elapsed: " + timeTakenMillis + " ms");
+
+        recordAnswer(); // Ensure the last answer is recorded
+
+        if (shuffledQuestions == null || shuffledQuestions.isEmpty()) {
+            LOGGER.warning("[TakeQuizScreen submitQuiz] No questions to submit.");
+            showErrorAlert("Submit Error", "There are no questions to submit.");
+            return;
+        }
+
+        // DO NOT grade questions here. Grading will happen after the pre-submission review.
+
+        // Navigate to Review Screen for pre-submission review
+        if (this.reviewController != null) {
+            LOGGER.info("[TakeQuizScreen submitQuiz] ReviewController is initialized. Navigating to review screen for pre-submission review.");
+            // Pass the original shuffledQuestions (ungraded) and selectedAnswers.
+            // ReviewScreenController will handle displaying these for user modification.
+            this.reviewController.setData(new ArrayList<>(shuffledQuestions), new ArrayList<>(selectedAnswers), timeTakenMillis);
+            screenManager.setScreen(LeanerSDTS.ReviewScreenID);
+        } else {
+            LOGGER.severe("[TakeQuizScreen submitQuiz] ReviewScreenController is STILL NOT initialized after lazy attempt. Cannot navigate to review screen.");
+            showErrorAlert("Navigation Error", "Could not prepare the review screen. Please contact support.");
+        }
     }
 
-    private void showTimeUpAlert() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Time Up");
-        alert.setHeaderText("Quiz Time Has Expired");
-        alert.setContentText("Your answers will be submitted automatically.");
-        alert.showAndWait();
+    private void startQuizTimer() {
+        quizStartTimeMillis = System.currentTimeMillis();
+        quizEndTime = Instant.now().plus(QUIZ_DURATION_MINUTES, ChronoUnit.MINUTES);
+        if (quizTimer != null) {
+            quizTimer.stop();
+        }
+        quizTimer = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer()));
+        quizTimer.setCycleCount(Timeline.INDEFINITE);
+        quizTimer.play();
+        LOGGER.info("[TakeQuizScreen] Quiz timer started.");
+    }
+
+    private void updateTimer() {
+        if (quizEndTime == null) {
+            LOGGER.warning("[TakeQuizScreen] quizEndTime is null in updateTimer.");
+            if (quizTimer != null) quizTimer.stop();
+            return;
+        }
+        java.time.Duration remainingTime = java.time.Duration.between(Instant.now(), quizEndTime);
+
+        if (remainingTime.isNegative() || remainingTime.isZero()) {
+            timerLabel.setText("00:00");
+            if (quizTimer != null) {
+                quizTimer.stop();
+            }
+            showErrorAlert("Time's Up!", "The quiz time has expired. Your answers will now be submitted.");
+            submitQuiz(); // submitQuiz signature updated, no longer throws IOException directly
+        } else {
+            long totalRemainingSeconds = remainingTime.getSeconds(); // Java 8 compatible
+            long minutes = totalRemainingSeconds / 60;
+            long seconds = totalRemainingSeconds % 60;
+            timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
+        }
+    }
+
+    private void updateNavigationButtonStates() {
+        setNavButtonsDisable(false); // Enable all by default, then selectively disable
+
+        if (shuffledQuestions == null || shuffledQuestions.isEmpty()) {
+            LOGGER.info("[TakeQuizScreen] No questions loaded, disabling navigation buttons.");
+            setNavButtonsDisable(true); // Disable all if no questions
+            if (reviewButton != null) reviewButton.setText("Review & Submit");
+            return;
+        }
+
+        if (previousButton != null) previousButton.setDisable(currentQuestionIndex == 0);
         
-        submitQuiz();
+        boolean isLastQuestion = (currentQuestionIndex == shuffledQuestions.size() - 1);
+        if (nextButton != null) nextButton.setDisable(isLastQuestion);
+        if (skipButton != null) skipButton.setDisable(isLastQuestion);
+        if (reviewButton != null) reviewButton.setText(isLastQuestion ? "Submit Quiz" : "Review & Submit");
+    }
+
+    private void setNavButtonsDisable(boolean disable) {
+        if (previousButton != null) previousButton.setDisable(disable);
+        if (nextButton != null) nextButton.setDisable(disable);
+        if (skipButton != null) skipButton.setDisable(disable);
+        if (reviewButton != null) reviewButton.setDisable(disable);
     }
 
     private void showErrorAlert(String title, String message) {
@@ -334,19 +353,15 @@ private void reviewAnswers() {
         alert.showAndWait();
     }
 
-    @FXML
-    private void handleOption1ButtonAction(ActionEvent event) {
-    }
+    @Override
+    public void runOnScreenChange() {}
 
-    @FXML
-    private void handleOption2ButtonAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleOption3ButtonAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleOption4ButtonAction(ActionEvent event) {
+    
+    @Override
+    public void cleanup() {
+        if (quizTimer != null) {
+            quizTimer.stop();
+        }
+        quizDataLoaded = false;
     }
 }

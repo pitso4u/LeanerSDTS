@@ -3,35 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.leanersdts;
-import java.io.File;
-import java.net.MalformedURLException;
+package leanersdts;
+
+import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.image.Image;
 
 public class RuleQuestion implements QuizQuestion {
-    private String questionText;
-    private String[] options;
-    private List<Integer> selectedOptions = new ArrayList<>();
-    private int correctOption;
-    private String imageUrl;
+    private String question;
+    private String[] options; // Should store 3 options
+    private int correctAnswer; // Index for the options array
+    private int userAnswerIndex = -1;
     private boolean hasImage;
-private int userAnswerIndex = -1; // Initialize with -1 to indicate no answer
+    private String imageUrl;
+    private List<Image> images; // For client-side JavaFX Image objects
+    private boolean correct = false;
+    private boolean skipped = false;
 
-    public RuleQuestion(String questionText, String[] options, int correctOption, String imageUrl, boolean hasImage) {
-        this.questionText = questionText;
-        this.options = options;
-        this.correctOption = correctOption;
-        this.imageUrl = imageUrl;
-        this.hasImage = hasImage;
+    public RuleQuestion() {
+        this.options = new String[3]; // Initialize to hold 3 options
+        this.images = new ArrayList<>();
     }
 
-    // Implement getters for the fields
+    @Override
+    public String getQuestion() {
+        return question;
+    }
 
     @Override
-    public String getQuestionText() {
-        return questionText;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     @Override
@@ -40,54 +41,97 @@ private int userAnswerIndex = -1; // Initialize with -1 to indicate no answer
     }
 
     @Override
-    public int getCorrectOption() {
-        return correctOption;
+    public void setOptions(String[] options) {
+        if (options != null && options.length == 3) {
+            this.options = options;
+        } else {
+            // Handle error: log or throw exception for incorrect number of options
+            System.err.println("RuleQuestion:setOptions - Incorrect number of options provided. Expected 3, got " + (options != null ? options.length : "null"));
+            this.options = new String[]{"-error-", "-error-", "-error-"}; 
+        }
     }
 
+    @Override
+    public int getCorrectAnswerIndex() {
+        return correctAnswer;
+    }
+
+    @Override
+    public void setCorrectAnswer(int index) {
+        this.correctAnswer = index;
+    }
+
+    @Override
+    public int getUserAnswerIndex() {
+        return userAnswerIndex;
+    }
+
+    @Override
+    public void setUserAnswerIndex(int index) {
+        this.userAnswerIndex = index;
+    }
+
+    @Override
+    public boolean isValid() {
+        if (question == null || question.trim().isEmpty()) return false;
+        if (options == null || options.length != 3) return false;
+        for (String option : options) {
+            if (option == null || option.trim().isEmpty()) return false;
+        }
+        return correctAnswer >= 0 && correctAnswer < options.length;
+    }
+
+    @Override
+    public void setHasImage(boolean hasImage) {
+        this.hasImage = hasImage;
+    }
+
+    @Override
+    public boolean hasImage() {
+        return hasImage;
+    }
+
+    @Override
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public boolean hasImage() {
-        return hasImage;
-    }
-     public int getUserAnswerIndex() {
-        return userAnswerIndex;
+    @Override
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public void setUserAnswerIndex(int userAnswerIndex) {
-        this.userAnswerIndex = userAnswerIndex;
-    }
-    public void addSelectedOption(int optionIndex) {
-        selectedOptions.add(optionIndex);
-    }
-
-    public void removeSelectedOption(int optionIndex) {
-        selectedOptions.remove((Integer) optionIndex);
+    @Override
+    public List<Image> getImages() {
+        // This might load images on demand based on imageUrl if needed by client UI
+        // For now, it just returns the list. Server provides URL, client handles loading.
+        return images;
     }
 
-    public List<Integer> getSelectedOptions() {
-        return selectedOptions;
-    }
- @Override
-public List<Image> getImages() {
-    List<Image> images = new ArrayList<>();
-    String imageUrl = getImageUrl();
-
-    if (imageUrl != null) {
-        try {
-            File imageFile = new File(imageUrl);
-            String fileUrl = imageFile.toURI().toURL().toString();
-            images.add(new Image(fileUrl));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public boolean isCorrect() {
+        return correct;
     }
 
-    return images;
-}
+    @Override
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
+    }
 
-    
+    @Override
+    public boolean isSkipped() {
+        return skipped;
+    }
+
+    @Override
+    public void setSkipped(boolean skipped) {
+        this.skipped = skipped;
+    }
+
+    @Override
+    public String getCategory() {
+        return "rules";
+    }
 }
 
 

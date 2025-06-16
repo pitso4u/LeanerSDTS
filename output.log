@@ -1,0 +1,106 @@
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - Starting application
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: login from file: LoginScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.QuizSummaryScreen - Initializing QuizSummaryScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: login
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: login
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: dashboard from file: DashboardScreen.fxml
+Jun 15, 2025 8:58:50 AM leanersdts.DashboardScreen initialize
+INFO: [DashboardScreen] initialize() called.
+Jun 15, 2025 8:58:50 AM leanersdts.DashboardScreen initialize
+INFO: DashboardScreen initialized.
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: dashboard
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: dashboard
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: LearningModulesScreen from file: LearningModulesScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: LearningModulesScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: LearningModulesScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: RiskPerceptionModuleScreen from file: RiskPerceptionModuleScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: RiskPerceptionModuleScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: RiskPerceptionModuleScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: RoadRulesModuleScreen from file: RoadRulesModuleScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: RoadRulesModuleScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: RoadRulesModuleScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: VehicleMaintenanceModuleScreen from file: VehicleMaintenanceModuleScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: VehicleMaintenanceModuleScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: VehicleMaintenanceModuleScreen
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Attempting to load TakeQuizScreen FXML.
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: TakeQuizScreen from file: TakeQuizScreen.fxml
+Jun 15, 2025 8:58:50 AM leanersdts.TakeQuizScreen initialize
+INFO: [TakeQuizScreen] Entering initialize(). Basic UI setup.
+Jun 15, 2025 8:58:50 AM leanersdts.TakeQuizScreen initialize
+INFO: [TakeQuizScreen] initialize() completed basic setup.
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: TakeQuizScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: TakeQuizScreen
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Finished loading TakeQuizScreen FXML. Success: true
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: review from file: ReviewScreen.fxml
+[JavaFX Application Thread] ERROR leanersdts.ScreenManager - Failed to load screen 'review' from file 'ReviewScreen.fxml'
+javafx.fxml.LoadException: 
+/C:/Users/Soets/GitHub/LeanerSDTS/build/classes/leanersdts/ReviewScreen.fxml:13
+
+	at javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2714)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2692)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2555)
+	at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2523)
+	at leanersdts.ScreenManager.loadScreen(ScreenManager.java:59)
+	at leanersdts.LeanerSDTS.start(LeanerSDTS.java:66)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.IllegalArgumentException: Unable to coerce 20 20 20 20 to class javafx.geometry.Insets.
+	at javafx.fxml/com.sun.javafx.fxml.BeanAdapter.coerce(BeanAdapter.java:497)
+	at javafx.fxml/com.sun.javafx.fxml.BeanAdapter.put(BeanAdapter.java:259)
+	at javafx.fxml/com.sun.javafx.fxml.BeanAdapter.put(BeanAdapter.java:54)
+	at javafx.fxml/javafx.fxml.FXMLLoader$Element.applyProperty(FXMLLoader.java:523)
+	at javafx.fxml/javafx.fxml.FXMLLoader$Element.processValue(FXMLLoader.java:373)
+	at javafx.fxml/javafx.fxml.FXMLLoader$Element.processPropertyAttribute(FXMLLoader.java:335)
+	at javafx.fxml/javafx.fxml.FXMLLoader$Element.processInstancePropertyAttributes(FXMLLoader.java:245)
+	at javafx.fxml/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:778)
+	at javafx.fxml/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2961)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2646)
+	... 13 more
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: results from file: ResultsScreen.fxml
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: results
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen loaded successfully: results
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Setting initial screen to LoginScreen.
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: login
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Preparing to start server discovery.
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Server discovery process initiated.
+[JavaFX Application Thread] INFO leanersdts.LeanerSDTS - Application started successfully, discovery initiated.
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Sent discovery packet to /255.255.255.255:3579
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Received broadcast: {"ip":"192.168.236.189","port":3003} from 127.0.0.1
+Jun 15, 2025 8:58:51 AM leanersdts.ServerConnector setBaseUrl
+INFO: [ServerConnector] Setting baseUrl to: http://192.168.236.189:3003/
+[pool-2-thread-1] INFO leanersdts.LeanerSDTS - [LeanerSDTS] onServerDiscovered: ServerConnector.baseUrl set to: http://192.168.236.189:3003/
+[pool-2-thread-1] INFO leanersdts.LeanerSDTS - Server discovered: http://192.168.236.189:3003/
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Discovery socket closed
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Discovery executor service shut down
+[JavaFX Application Thread] INFO leanersdts.LoginScreen - Login attempt for user: mosa
+Jun 15, 2025 8:58:57 AM leanersdts.ServerConnector validateLogin
+INFO: [ServerConnector] validateLogin called. Current baseUrl: http://192.168.236.189:3003/
+[JavaFX Application Thread] INFO leanersdts.LoginScreen - Successful login for user: mosa
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: dashboard
+Jun 15, 2025 8:58:59 AM leanersdts.DashboardScreen handleTakeQuizButtonAction
+INFO: [DashboardScreen] handleTakeQuizButtonAction called. Attempting to set screen to TakeQuizScreenID.
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: TakeQuizScreen
+Jun 15, 2025 8:58:59 AM leanersdts.DashboardScreen handleTakeQuizButtonAction
+INFO: [DashboardScreen] Calling loadQuizDataAndStart() on TakeQuizScreen.
+Jun 15, 2025 8:58:59 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+INFO: [TakeQuizScreen] Entering loadQuizDataAndStart(). Current ServerConnector.baseUrl: http://192.168.236.189:3003/
+Jun 15, 2025 8:58:59 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+INFO: [TakeQuizScreen] Creating QuizQuestionDatabase
+Jun 15, 2025 8:58:59 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+INFO: [TakeQuizScreen] Fetching random questions
+Jun 15, 2025 8:58:59 AM leanersdts.ServerConnector getRandomQuizQuestions
+INFO: [ServerConnector] getRandomQuizQuestions called. Current baseUrl: http://192.168.236.189:3003/
+Jun 15, 2025 8:58:59 AM leanersdts.ServerConnector getRandomQuizQuestions
+SEVERE: Failed to get quiz questions with status code: 404
+QuizQuestionDatabase: Failed to fetch questions from server. Returning empty list.
+Jun 15, 2025 8:58:59 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+INFO: [TakeQuizScreen] Number of questions loaded: 0
+Jun 15, 2025 8:58:59 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+SEVERE: [TakeQuizScreen] No Questions Available

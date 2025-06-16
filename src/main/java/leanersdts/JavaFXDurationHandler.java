@@ -1,4 +1,4 @@
-package main.java.leanersdts;
+package leanersdts;
 
 import javafx.util.Duration;
 

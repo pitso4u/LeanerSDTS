@@ -1,257 +1,154 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package main.java.leanersdts;
+package leanersdts;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
+import javafx.scene.layout.VBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class QuizSummaryScreen implements ControlledScreen {
+import java.util.List;
 
-    @FXML
-    private Label learnerLabel;
+public class QuizSummaryScreen extends VBox implements ControlledScreen {
+    private static final Logger logger = LoggerFactory.getLogger(QuizSummaryScreen.class);
 
-    @FXML
-    private Label dateLabel;
-
-    @FXML
-    private Label timeTakenLabel;
-
-    @FXML
-    private TextArea summaryTextArea;
-
-    @FXML
-    private Label passFailLabel;
-
-    @FXML
-    private Label resultLabel;
-
-    private Label summaryTextLabel;
+    // --- MINIMUM SCORES AND TOTALS ---
+    private static final int SIGNS_TOTAL = 28;
+    private static final int RULES_TOTAL = 28;
+    private static final int CONTROLS_TOTAL = 8;
+    private static final int SIGNS_MIN = 23;
+    private static final int RULES_MIN = 22;
+    private static final int CONTROLS_MIN = 6;
 
     private ScreenManager screenManager;
-    private Map<Integer, Duration> timeTakenPerQuestion;
-    private Map<Integer, String> answerStatusPerQuestion;
-    private List<String> incorrectAnswersList;
-    private String learnerName;
-    private LoginData loginDat;
-    private int correctAnswersCount;
-    private int totalQuestions;
-    @FXML
-    private SanFranciscoFireworks fireworks = new SanFranciscoFireworks();
-    @FXML
-    private ImageView carImageView;
+    private List<QuizQuestion> questions;
 
-    public void initialize() {
-        loadCarImage();
+    // --- FXML UI Elements ---
+    @FXML private Label overallResultMessage;
+    @FXML private Label percentageScoreLabel;
+
+    // Metric Cards
+    @FXML private VBox signsCard;
+    @FXML private VBox rulesCard;
+    @FXML private VBox controlsCard;
+
+    // Status Icons
+    @FXML private ImageView signsStatusIcon;
+    @FXML private ImageView rulesStatusIcon;
+    @FXML private ImageView controlsStatusIcon;
+
+    // Score Labels
+    @FXML private Label signsScoreLabel;
+    @FXML private Label rulesScoreLabel;
+    @FXML private Label controlsScoreLabel;
+
+    // Minimum Required Labels
+    @FXML private Label signsMinLabel;
+    @FXML private Label rulesMinLabel;
+    @FXML private Label controlsMinLabel;
+
+    // Buttons
+    @FXML private Button reviewAllButton;
+    @FXML private Button reviewIncorrectButton;
+    @FXML private Button dashboardButton;
+
+    private final Image passIcon = new Image(QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/happy_face.jpeg"));
+    private final Image failIcon = new Image(QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/sad_face.jpeg"));
+
+    public void setData(List<QuizQuestion> questions, long timeTaken) {
+        this.questions = questions;
+        updateDisplay();
     }
 
-    private void loadCarImage() {
-        try {
-
-            String svgPathData = "M20 20 L180 20 L180 80 L20 80 Z M30 10 L170 10 L170 30 L30 30 Z M45 30 L75 30 L75 60 L45 60 Z M125 30 L155 30 L155 60 L125 60 Z M50 80 A10 10 0 1 0 50 60 A10 10 0 1 0 50 80 Z M150 80 A10 10 0 1 0 150 60 A10 10 0 1 0 150 80 Z";
-
-            SVGPath svgPath = new SVGPath();
-            svgPath.setContent(svgPathData);
-            // Create an Image from the SVGPath
-            Image carImage = createImageFromSVG(svgPath);
-
-            // Set the Image to the ImageView
-            carImageView.setImage(carImage);
-
-            // Apply any animation or styling as needed
-            //applyCarAnimation();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void updateDisplay() {
+        if (questions == null || questions.isEmpty()) {
+            logger.warn("No questions data available to display summary.");
+            return;
         }
-    }
 
-    private Image createImageFromSVG(SVGPath svgPath) {
-        int imageSize = 100;
+        // --- Calculate Scores ---
+        int signsCorrect = 0;
+        int rulesCorrect = 0;
+        int controlsCorrect = 0;
 
-        ImageView imageView = new ImageView();
-        imageView.setClip(svgPath);
-        imageView.setFitWidth(imageSize);
-        imageView.setFitHeight(imageSize);
-
-        return imageView.snapshot(null, null);
-    }
-
-    private void applyCarAnimation() {
-        // Apply animation to the ImageView (CSS or JavaFX Animation API)
-        // Example using CSS animation (adjust the animation properties):
-        carImageView.getStyleClass().add("car-animation");
-    }
-
-    public void setLoginDat(LoginData loginDat) {
-        this.loginDat = loginDat;
-    }
-
-    public void setQuizDetails(Map<Integer, Duration> timeTakenPerQuestion, Map<Integer, String> answerStatusPerQuestion, List<String> incorrectAnswersList) {
-        this.timeTakenPerQuestion = timeTakenPerQuestion;
-        this.answerStatusPerQuestion = answerStatusPerQuestion;
-        this.incorrectAnswersList = incorrectAnswersList;
-        displaySummary();
-
-        // Check if the learner has passed (you need to implement this logic)
-        boolean passed = checkIfPassed(); // Implement this method based on your passing criteria
-
-        // If the learner has passed, play the fireworks celebration
-        if (passed) {
-            fireworks.start();
-        }
-    }
-    // Method to check if the learner has passed (you need to implement this logic)
-
-    private boolean checkIfPassed() {
-        // Implement your passing criteria and return true if passed, false otherwise
-        // For example, you can check the percentage of correct answers
-        double percentage = (double) correctAnswersCount / totalQuestions * 100;
-        return percentage >= 80.0;
-    }
-
-    public void setLearnerName(LoginData loginDat) {
-        this.loginDat = loginDat;
-        learnerLabel.setText("Learner: " + loginDat.getFull_name());
-    }
-
-    public void setLearnerName(String learnerName) {
-        this.learnerName = learnerName;
-    }
-
-    public void setLearnerLoginDat(LoginData loginDat) {
-        this.loginDat = loginDat;
-    }
-
-    public void setIncorrectAnswersList(Map<Integer, String> incorrectAnswersList) {
-        this.answerStatusPerQuestion = incorrectAnswersList;
-    }
-
-    private void showQuizSummary() {
-        screenManager.setScreen("QuizSummaryScreen");
-        QuizSummaryScreen quizSummaryScreen = (QuizSummaryScreen) screenManager.getController("QuizSummaryScreen");
-
-        // Check if correctAnswersCount and totalQuestions are properly set
-        if (correctAnswersCount >= 0 && totalQuestions > 0) {
-            double percentage = (double) correctAnswersCount / totalQuestions * 100;
-            String summary = String.format("%.2f%% (%d out of %d)", percentage, correctAnswersCount, totalQuestions);
-
-            quizSummaryScreen.setDate(LocalDateTime.now().toString());
-            quizSummaryScreen.setTimeTaken(formatDuration(timeTakenPerQuestion.get(totalQuestions - 1)));
-            quizSummaryScreen.setSummaryText(summary);
-            quizSummaryScreen.setPassFailLabel(percentage);
-            quizSummaryScreen.setQuizDetails(timeTakenPerQuestion, answerStatusPerQuestion, incorrectAnswersList);
-        } else {
-            // Handle the case where correctAnswersCount and totalQuestions are not set
-            System.err.println("Error: correctAnswersCount or totalQuestions not set.");
-        }
-    }
-
-    // Method to set various learner details upon login
-    public void setLearnerDetails(LoginData loginDat, Map<Integer, Duration> timeTakenPerQuestion, Map<Integer, String> answerStatusPerQuestion, List<String> incorrectAnswersList) {
-        this.loginDat = loginDat;
-        this.timeTakenPerQuestion = timeTakenPerQuestion;
-        this.answerStatusPerQuestion = answerStatusPerQuestion;
-        this.incorrectAnswersList = incorrectAnswersList;
-
-        // Display learner's full name
-        learnerLabel.setText("Learner: " + loginDat.getFull_name());
-
-        // Show quiz summary based on the provided data
-        showQuizSummary();
-    }
-
-    private String formatDuration(Duration duration) {
-        long minutes = duration.toMinutes();
-        long seconds = duration.minusMinutes(minutes).getSeconds();
-        return String.format("%02d:%02d", minutes, seconds);
-    }
-
-    public void setQuizDetails(LoginData loginDat, String date, String timeTaken, String result, String summaryText) {
-        learnerLabel.setText("Learner: " + loginDat.getFull_name());
-        dateLabel.setText("Date: " + date);
-        timeTakenLabel.setText("Time Taken: " + timeTaken);
-        resultLabel.setText("Result: " + summaryText);
-        summaryTextLabel.setText("Summary: " + summaryText);
-        displaySummary();
-    }
-
-    public void setPassFailLabel(double percentage) {
-        String result = percentage >= 80.0 ? "Pass" : "Fail, Sorry try again";
-        passFailLabel.setText(result);
-        passFailLabel.setTextFill(percentage >= 80.0 ? Color.GREEN : Color.RED); // Adjust colors as needed
-    }
-
-    public void startFireworks() {
-        fireworks.start();
-    }
-
-    public void stopFireworks() {
-        fireworks.stop();
-    }
-
-    @FXML
-    private void handleBackButtonAction() {
-        // Stop the fireworks when navigating back
-        stopFireworks();
-        screenManager.setScreen("DashboardScreen");
-    }
-
-    private void displaySummary() {
-        StringBuilder summary = new StringBuilder("Quiz Summary:\n\n");
-
-        for (int i = 0; i < timeTakenPerQuestion.size(); i++) {
-            Duration timeTaken = timeTakenPerQuestion.getOrDefault(i, Duration.ZERO);
-            String answerStatus = answerStatusPerQuestion.getOrDefault(i, "");
-
-            summary.append(String.format("Question %d: %s\n", i + 1, formatDuration(timeTaken)));
-            summary.append(String.format("Answer Status: %s\n", answerStatus.equals("Correct") ? "Correct" : "Incorrect"));
-
-            if (answerStatus.equals("Incorrect") && incorrectAnswersList != null && i < incorrectAnswersList.size()) {
-                // Add details for incorrect answers directly from incorrectAnswersList
-                String incorrectAnswerDetails = incorrectAnswersList.get(i);
-                summary.append(String.format("Question: %s\n", incorrectAnswerDetails));
-                // You can add more details like Correct Answer, etc., based on your data structure
-            } else {
-                // Handle the case where incorrectAnswersList is null or index is out of bounds
-                summary.append("Details not available\n");
+        for (QuizQuestion q : questions) {
+            if (q.isCorrect()) {
+                switch (q.getCategory().toLowerCase()) {
+                    case "signs":
+                        signsCorrect++;
+                        break;
+                    case "rules":
+                        rulesCorrect++;
+                        break;
+                    case "controls":
+                        controlsCorrect++;
+                        break;
+                }
             }
-
-            summary.append("\n");
         }
 
-        summaryTextArea.appendText(summary.toString());
+        // --- Determine Pass/Fail Status ---
+        boolean signsPassed = signsCorrect >= SIGNS_MIN;
+        boolean rulesPassed = rulesCorrect >= RULES_MIN;
+        boolean controlsPassed = controlsCorrect >= CONTROLS_MIN;
+        boolean overallPassed = signsPassed && rulesPassed && controlsPassed;
+
+        // --- Update UI ---
+        // Overall Result
+        overallResultMessage.setText(overallPassed ? "Congratulations! You Passed." : "Sorry, you did not pass. Try again.");
+        int totalCorrect = signsCorrect + rulesCorrect + controlsCorrect;
+        int totalQuestions = SIGNS_TOTAL + RULES_TOTAL + CONTROLS_TOTAL;
+        int percentage = (int) Math.round(((double) totalCorrect / totalQuestions) * 100);
+        percentageScoreLabel.setText(String.format("Overall Score: %d%%", percentage));
+
+        // Signs Card
+        updateMetricCard(signsCard, signsStatusIcon, signsScoreLabel, signsMinLabel, signsCorrect, SIGNS_TOTAL, SIGNS_MIN, signsPassed);
+
+        // Rules Card
+        updateMetricCard(rulesCard, rulesStatusIcon, rulesScoreLabel, rulesMinLabel, rulesCorrect, RULES_TOTAL, RULES_MIN, rulesPassed);
+
+        // Controls Card
+        updateMetricCard(controlsCard, controlsStatusIcon, controlsScoreLabel, controlsMinLabel, controlsCorrect, CONTROLS_TOTAL, CONTROLS_MIN, controlsPassed);
     }
 
-    public void setDate(String date) {
-        dateLabel.setText(date);
+    private void updateMetricCard(VBox card, ImageView icon, Label scoreLabel, Label minLabel, int correct, int total, int min, boolean passed) {
+        icon.setImage(passed ? passIcon : failIcon);
+        scoreLabel.setText(String.format("You: %d/%d", correct, total));
+        minLabel.setText(String.format("Minimum: %d", min));
+        String bgColor = passed ? "#c8e6c9" : "#ffcdd2"; // Light green for pass, light red for fail
+        card.setStyle(String.format("-fx-border-color: black; -fx-border-width: 1; -fx-background-color: %s; -fx-padding: 10;", bgColor));
     }
 
-    public void setTimeTaken(String timeTaken) {
-        timeTakenLabel.setText(timeTaken);
+    @FXML
+    private void handleReviewAllAction() {
+        logger.info("'Review All' button clicked.");
+        if (screenManager != null && questions != null) {
+            ReviewScreen reviewScreen = (ReviewScreen) screenManager.getController("ReviewScreen");
+            reviewScreen.setData(questions, ReviewScreen.ReviewMode.POST_SUBMISSION);
+            screenManager.setScreen("ReviewScreen");
+        }
     }
 
-    public void setSummaryText(String summaryText) {
-        resultLabel.setText(summaryText);
+    @FXML
+    private void handleReviewIncorrectAction() {
+        logger.info("'Review Incorrect' button clicked.");
+        if (screenManager != null && questions != null) {
+            ReviewScreen reviewScreen = (ReviewScreen) screenManager.getController("ReviewScreen");
+            reviewScreen.setData(questions, ReviewScreen.ReviewMode.POST_SUBMISSION);
+            // The logic to filter is on the review screen, which is what we want.
+            // The user can click the checkbox themselves.
+            screenManager.setScreen("ReviewScreen");
+        }
     }
 
-    public void setPassFailLabel(boolean passed) {
-        passFailLabel.setText(passed ? "Pass" : "Fail, Sorry try again");
-        passFailLabel.setTextFill(passed ? Color.GREEN : Color.RED); // Adjust colors as needed
+    @FXML
+    private void handleDashboardAction() {
+        logger.info("'Go to Dashboard' button clicked.");
+        if (screenManager != null) {
+            screenManager.setScreen("DashboardScreen");
+        }
     }
 
     @Override
@@ -261,11 +158,12 @@ public class QuizSummaryScreen implements ControlledScreen {
 
     @Override
     public void runOnScreenChange() {
-        // Code to run when the screen is changed, if needed
+        // Data is now set via setData, so this can be left empty or used for other purposes.
     }
 
     @Override
     public void cleanup() {
-        // Cleanup code, if needed
+        // Optional: Clear any state if necessary when the screen is left
+        this.questions = null;
     }
 }

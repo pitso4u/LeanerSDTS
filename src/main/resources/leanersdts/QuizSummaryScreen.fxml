@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,148 +17,134 @@
 <?import javafx.scene.text.Text?>
 <?import main.java.leanersdts.SanFranciscoFireworks?>
 
-
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.leanersdts.QuizSummaryScreen">
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leanersdts.QuizSummaryScreen">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0">
-          <children>
-              <!-- Add the fireworks instance -->
-              <SanFranciscoFireworks fx:id="fireworks" prefHeight="742.0" prefWidth="1329.0">
+         <children>
+            <SanFranciscoFireworks fx:id="fireworks" prefHeight="742.0" prefWidth="1329.0">
                <children>
                   <Pane prefHeight="707.0" prefWidth="1285.0" />
                </children>
             </SanFranciscoFireworks>
             <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1365.0">
                <children>
-                    <ImageView fitHeight="197.0" fitWidth="930.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../Images/bakubungwebsitebanner.jpg" />
-                        </image>
-                        <effect>
-                            <Reflection fraction="0.27" topOpacity="0.12" />
-                        </effect>
-                    </ImageView>
-                    <Line endX="1339.928955078125" stroke="#00000083" strokeWidth="10.0" />
-                    <Text stroke="#862222" strokeWidth="0.8" text="Learner Licence SmartDrive Training Suite" textAlignment="CENTER" wrappingWidth="1113.4345703125">
-                        <fill>
-                            <LinearGradient endX="1.0" endY="0.7095238095238094" startX="1.0" startY="0.5">
-                                <stops>
-                                    <Stop color="#403f36" />
-                                    <Stop color="BLACK" offset="1.0" />
-                                </stops>
-                            </LinearGradient>
-                        </fill>
-                        <font>
-                            <Font name="Berlin Sans FB Demi Bold" size="52.0" />
-                        </font>
-                    </Text>
-                    <VBox alignment="CENTER" prefHeight="90.0" prefWidth="1358.0" spacing="10.0">
-                        <children>
-                            <Text stroke="#862222" strokeWidth="0.8" text="Quiz Summary" textAlignment="CENTER" wrappingWidth="583.4345703125">
-                                <fill>
-                                    <LinearGradient endX="1.0" endY="0.7095238095238094" startX="1.0" startY="0.5">
-                                        <stops>
-                                            <Stop color="#403f36" />
-                                            <Stop color="BLACK" offset="1.0" />
-                                        </stops>
-                                    </LinearGradient>
-                                </fill>
-                                <font>
-                                    <Font name="Berlin Sans FB Demi Bold" size="38.0" />
-                                </font>
-                            </Text>
-                            <HBox>
-                                <children>
-                                    <HBox prefHeight="32.0" prefWidth="464.0">
-                                        <children>
-                                            <Label text="Learner: ">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                            <Label fx:id="learnerLabel">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </HBox>
-                                    <HBox prefHeight="32.0" prefWidth="334.0">
-                                        <children>
-                                            <Label text="Time Taken: ">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                            <Label fx:id="timeTakenLabel">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </HBox>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                        <children>
-                                            <Label text="Result: ">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                            <Label fx:id="resultLabel">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </HBox>
-                                    <HBox prefHeight="32.0" prefWidth="379.0">
-                                        <children>
-                                            <Label text="Date: ">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                            <Label fx:id="dateLabel">
-                                                <font>
-                                                    <Font name="Arial Rounded MT Bold" size="22.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </HBox>
-                                </children>
-                            </HBox>
-                        </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                    </VBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="418.0" prefWidth="1367.0" style="-fx-spacing: 0;">
+                  <ImageView fitHeight="150.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/bakubungwebsitebanner.jpg" />
+                     </image>
+                     <effect>
+                        <Reflection fraction="0.27" topOpacity="0.12" />
+                     </effect>
+                  </ImageView>
+                  <Line endX="1339.928955078125" stroke="#00000083" strokeWidth="5.0" />
+                  <Text stroke="#862222" strokeWidth="0.8" text="Quiz Summary" textAlignment="CENTER" wrappingWidth="1113.4345703125">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="48.0" />
+                     </font>
+                  </Text>
+                  <VBox alignment="CENTER" prefHeight="45.0" prefWidth="1366.0">
                      <children>
-                          <TextArea fx:id="summaryTextArea" prefHeight="413.0" prefWidth="860.0" style="-fx-padding: 5;">
-                              <font>
-                                  <Font name="Arial Rounded MT Bold" size="18.0" />
-                              </font>
-                          </TextArea>
-                        <VBox alignment="CENTER" prefHeight="523.0" prefWidth="729.0" style="-fx-spacing: 10;">
+                        <Label fx:id="overallResultMessage" text="Congratulations! You Passed.">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="percentageScoreLabel" text="Overall Score: 88%">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="metricsContainer" alignment="CENTER" prefHeight="250.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <!-- Metric Card for Signs -->
+                        <VBox fx:id="signsCard" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #c8e6c9; -fx-padding: 10;">
                            <children>
-                              <ImageView fx:id="carImageView" fitHeight="220.0" fitWidth="276.0" pickOnBounds="true" preserveRatio="true" /> 
-                                <Label fx:id="passFailLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="546.0" text="Pass/Fail" textAlignment="CENTER" textFill="#35fa1b">
-                                    <font>
-                                        <Font name="Arial Rounded MT Bold" size="86.0" />
-                                    </font>
-                                </Label>
-                                <Button alignment="CENTER" onAction="#handleBackButtonAction" prefHeight="37.0" prefWidth="192.0" style="-fx-background-color: #167add;" text="Back" textFill="WHITE">
-                                    <font>
-                                        <Font name="Arial Unicode MS" size="26.0" />
-                                    </font>
-                                </Button>
+                              <Label text="Road Signs">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="signsStatusIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="signsScoreLabel" text="You: 25/28">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="signsMinLabel" text="Minimum: 23">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <!-- Metric Card for Rules -->
+                        <VBox fx:id="rulesCard" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #ffcdd2; -fx-padding: 10;">
+                           <children>
+                              <Label text="Rules of the Road">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="rulesStatusIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="rulesScoreLabel" text="You: 20/28">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rulesMinLabel" text="Minimum: 22">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <!-- Metric Card for Controls -->
+                        <VBox fx:id="controlsCard" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="5.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #c8e6c9; -fx-padding: 10;">
+                           <children>
+                              <Label text="Vehicle Controls">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="controlsStatusIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="controlsScoreLabel" text="You: 7/8">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="controlsMinLabel" text="Minimum: 6">
+                                 <font>
+                                    <Font name="Arial Nova" size="20.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="reviewAllButton" mnemonicParsing="false" onAction="#handleReviewAllAction" style="-fx-background-color: #1E90FF;" text="Review All Answers" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="reviewIncorrectButton" mnemonicParsing="false" onAction="#handleReviewIncorrectAction" style="-fx-background-color: #FF6347;" text="Review Incorrect Answers" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#handleDashboardAction" style="-fx-background-color: #32CD32;" text="Go to Dashboard" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-          </children>
+         </children>
       </StackPane>
    </children>
 </VBox>

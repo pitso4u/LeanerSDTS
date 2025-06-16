@@ -1,125 +1,70 @@
-package main.java.leanersdts;
+package leanersdts;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.events.JFXDialogEvent;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.effect.BoxBlur;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 
 public class AlertMaker {
+    private static final Logger logger = Logger.getLogger(AlertMaker.class.getName());
 
     public static void showSimpleAlert(String title, String content) {
+        logger.info("Showing simple alert - Title: " + title + ", Content: " + content);
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-
         alert.showAndWait();
     }
 
     public static void showErrorMessage(String title, String content) {
+        logger.log(Level.SEVERE, "Showing error message - Title: " + title + ", Content: " + content);
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(title);
         alert.setContentText(content);
-
         alert.showAndWait();
     }
 
     public static void showErrorMessage(Exception ex) {
+        logger.log(Level.SEVERE, "Showing error message for exception", ex);
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error occured");
-        alert.setHeaderText("Error Occured");
-        alert.setContentText(ex.getLocalizedMessage());
-
+        alert.setHeaderText("An error occurred");
         StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
-
-        Label label = new Label("The exception stacktrace was:");
-
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-        alert.getDialogPane().setExpandableContent(expContent);
+        ex.printStackTrace(new PrintWriter(sw));
+        alert.setContentText(sw.toString());
         alert.showAndWait();
     }
 
     public static void showErrorMessage(Exception ex, String title, String content) {
+        logger.log(Level.SEVERE, "Showing error message - Title: " + title + ", Content: " + content, ex);
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error occured");
         alert.setHeaderText(title);
-        alert.setContentText(content);
-
         StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
-
-        Label label = new Label("The exception stacktrace was:");
-
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-        alert.getDialogPane().setExpandableContent(expContent);
+        ex.printStackTrace(new PrintWriter(sw));
+        alert.setContentText(content + "\n" + sw.toString());
         alert.showAndWait();
     }
 
-    public static void showMaterialDialog(StackPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
+    public static void showMaterialDialog(StackPane root, Node nodeToBeBlurred, List<Button> controls, String header, String body) {
+        logger.info("Showing material dialog - Header: " + header + ", Body: " + body);
         BoxBlur blur = new BoxBlur(3, 3, 3);
-
-        JFXDialogLayout dialogLayout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
-        
-        controls.forEach(controlButton->{
-            controlButton.getStyleClass().add("dialog-button");
-            controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                dialog.close();
-            });
-        });
-
-        dialogLayout.setHeading(new Label(header));
-        dialogLayout.setBody(new Label(body));
-        dialogLayout.setActions(controls);
-        dialog.show();
-        dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
-            nodeToBeBlurred.setEffect(null);
-        });
         nodeToBeBlurred.setEffect(blur);
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle(header);
+        dialog.setHeaderText(body);
+        controls.forEach(controlButton -> dialog.getDialogPane().getButtonTypes().add(new javafx.scene.control.ButtonType(controlButton.getText())));
+        dialog.setOnHidden(event -> nodeToBeBlurred.setEffect(null));
+        dialog.showAndWait();
     }
 }
