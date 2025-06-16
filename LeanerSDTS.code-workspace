@@ -14,6 +14,7 @@
 		"terminal.integrated.env.windows": {
 			"JAVA_HOME": "c:\\Program Files\\Java\\jdk-17",
 			"PATH": "c:\\Program Files\\Java\\jdk-17\\bin;${env:PATH}"
-		}
+		},
+		"java.configuration.updateBuildConfiguration": "interactive"
 	}
 }

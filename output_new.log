@@ -296,3 +296,4 @@ ReviewScreenController: setDataForPostResults called.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: RiskPerceptionModuleScreen
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Going back to screen: dashboard
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: dashboard
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: login
