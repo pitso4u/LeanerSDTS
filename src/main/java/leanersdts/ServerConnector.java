@@ -224,42 +224,54 @@ public class ServerConnector {
         return questions;
     }
 
-    public static List<QuizQuestion> getRandomQuizQuestions(int totalCount) {
-        LOGGER.info("[ServerConnector] getRandomQuizQuestions called for " + totalCount + " questions. Current baseUrl: " + baseUrl);
-        List<QuizQuestion> allFetchedQuestions = new ArrayList<>();
-        List<QuizQuestion> finalSelectedQuestions = new ArrayList<>();
+    public static List<QuizQuestion> getQuizQuestions() {
+        LOGGER.info("[ServerConnector] getQuizQuestions called. Fetching structured quiz set. Current baseUrl: " + baseUrl);
+        List<QuizQuestion> finalQuizQuestions = new ArrayList<>();
 
-        if (totalCount <= 0) {
-            LOGGER.info("[ServerConnector] Requested 0 total questions. Returning empty list.");
-            return finalSelectedQuestions;
-        }
         if (baseUrl == null || baseUrl.trim().isEmpty()) {
-            LOGGER.severe("[ServerConnector] Base URL is not set. Cannot fetch random quiz questions.");
-            return finalSelectedQuestions;
+            LOGGER.severe("[ServerConnector] Base URL is not set. Cannot fetch quiz questions.");
+            return finalQuizQuestions;
         }
 
-        // Since server returns all questions per category, we fetch all then select client-side.
-        // The 'count' in fetchQuestionsFromCategory is for future server optimization.
-        int dummyCountPerCategory = totalCount; // Fetch all, then pick 'totalCount' after shuffling all fetched.
+        final int signsCount = 28;
+        final int rulesCount = 28;
+        final int controlsCount = 8;
 
         try {
-            LOGGER.info("[ServerConnector] Fetching all questions from controls, signs, and rules categories.");
-            allFetchedQuestions.addAll(fetchQuestionsFromCategory("controls", dummyCountPerCategory));
-            allFetchedQuestions.addAll(fetchQuestionsFromCategory("signs", dummyCountPerCategory));
-            allFetchedQuestions.addAll(fetchQuestionsFromCategory("rules", dummyCountPerCategory));
-
-            Collections.shuffle(allFetchedQuestions, random); // Shuffle all available questions from all categories
-
-            // Select the required number of questions (totalCount)
-            for (int i = 0; i < Math.min(totalCount, allFetchedQuestions.size()); i++) {
-                finalSelectedQuestions.add(allFetchedQuestions.get(i));
+            // Fetch, shuffle, and select questions for each category
+            List<QuizQuestion> signsQuestions = fetchQuestionsFromCategory("signs", signsCount);
+            Collections.shuffle(signsQuestions, random);
+            int signsToTake = Math.min(signsCount, signsQuestions.size());
+            if (signsToTake > 0) {
+                finalQuizQuestions.addAll(signsQuestions.subList(0, signsToTake));
             }
-            
-            LOGGER.info("[ServerConnector] Total questions fetched: " + allFetchedQuestions.size() + ". Selected for quiz: " + finalSelectedQuestions.size());
-            return finalSelectedQuestions;
+
+            List<QuizQuestion> rulesQuestions = fetchQuestionsFromCategory("rules", rulesCount);
+            Collections.shuffle(rulesQuestions, random);
+            int rulesToTake = Math.min(rulesCount, rulesQuestions.size());
+            if (rulesToTake > 0) {
+                finalQuizQuestions.addAll(rulesQuestions.subList(0, rulesToTake));
+            }
+
+            List<QuizQuestion> controlsQuestions = fetchQuestionsFromCategory("controls", controlsCount);
+            Collections.shuffle(controlsQuestions, random);
+            int controlsToTake = Math.min(controlsCount, controlsQuestions.size());
+            if (controlsToTake > 0) {
+                finalQuizQuestions.addAll(controlsQuestions.subList(0, controlsToTake));
+            }
+
+            // Shuffle the final combined list so the user gets a mixed quiz
+            Collections.shuffle(finalQuizQuestions, random);
+
+            LOGGER.info("[ServerConnector] Successfully created structured quiz. Total questions: " + finalQuizQuestions.size()
+                + " (Signs: " + signsToTake
+                + ", Rules: " + rulesToTake
+                + ", Controls: " + controlsToTake + ")");
+
+            return finalQuizQuestions;
 
         } catch (IOException | InterruptedException e) {
-            LOGGER.log(Level.SEVERE, "[ServerConnector] Error getting random quiz questions", e);
+            LOGGER.log(Level.SEVERE, "[ServerConnector] Error getting structured quiz questions", e);
             return Collections.emptyList();
         }
     }

@@ -12,13 +12,12 @@ public class QuizQuestionDatabase {
 
     public List<QuizQuestion> getRandomQuestions() {
         // Default number of questions to fetch for a quiz.
-        // This could be made configurable if needed in the future.
-        int numberOfQuestionsToFetch = 20;
+        // The number of questions is now fixed to 64 (28 signs, 28 rules, 8 controls) in ServerConnector.
 
-        List<QuizQuestion> fetchedQuestions = ServerConnector.getRandomQuizQuestions(numberOfQuestionsToFetch);
+                List<QuizQuestion> fetchedQuestions = ServerConnector.getQuizQuestions();
 
         if (fetchedQuestions == null) {
-            // ServerConnector.getRandomQuizQuestions logs errors internally.
+                        // ServerConnector.getQuizQuestions logs errors internally.
             // Return an empty list to prevent NullPointerExceptions downstream.
             System.err.println("QuizQuestionDatabase: Failed to fetch questions from server. Returning empty list.");
             return new ArrayList<>(); // Return an empty list, not null

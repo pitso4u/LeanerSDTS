@@ -16,7 +16,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import leanersdts.ReviewScreen;
+
 import javafx.scene.Node;
 
 public class TakeQuizScreen implements ControlledScreen {
@@ -29,6 +29,9 @@ public class TakeQuizScreen implements ControlledScreen {
     private ProgressBar progressBar;
     @FXML
     private Label timerLabel;
+    @FXML
+    private Label questionPositionLabel;
+
     @FXML
     private Text questionLabel;
     @FXML
@@ -48,7 +51,7 @@ public class TakeQuizScreen implements ControlledScreen {
 
     private ScreenManager screenManager;
     private List<QuizQuestion> shuffledQuestions;
-    private List<Integer> selectedAnswers;
+
     private int currentQuestionIndex = 0;
     private boolean quizDataLoaded = false;
 
@@ -73,6 +76,7 @@ public class TakeQuizScreen implements ControlledScreen {
         questionLabel.setText("Loading quiz, please wait...");
         optionsContainer.getChildren().clear();
         setNavButtonsDisable(true); // Disable all navigation buttons initially
+
     }
 
     public void loadQuizDataAndStart() {
@@ -90,12 +94,6 @@ public class TakeQuizScreen implements ControlledScreen {
                 LOGGER.severe("[TakeQuizScreen] No questions were loaded from the server.");
                 showErrorAlert("Quiz Error", "Could not load any questions. Please try again later.");
                 return;
-            }
-
-            // Initialize selectedAnswers list with -1 (unanswered)
-            selectedAnswers = new ArrayList<>();
-            for (int i = 0; i < shuffledQuestions.size(); i++) {
-                selectedAnswers.add(-1);
             }
 
             currentQuestionIndex = 0;
@@ -116,7 +114,8 @@ public class TakeQuizScreen implements ControlledScreen {
             return;
 
         QuizQuestion question = shuffledQuestions.get(index);
-        questionLabel.setText(question.getQuestion());
+        questionPositionLabel.setText("Question " + (currentQuestionIndex + 1) + " of " + shuffledQuestions.size());
+        questionLabel.setText(question.getQuestion().replace("\\n", "\n"));
 
         // Handle image visibility
         String imageUrl = question.getImageUrl();
@@ -170,7 +169,7 @@ public class TakeQuizScreen implements ControlledScreen {
 
         // Restore previously selected answer for this question
         progressBar.setProgress((double) (index + 1) / shuffledQuestions.size()); // Moved here
-        int previousAnswer = selectedAnswers.get(index);
+        int previousAnswer = question.getUserAnswerIndex();
         if (previousAnswer != -1) {
             for (Toggle toggle : optionsGroup.getToggles()) {
                 if ((Integer) toggle.getUserData() == previousAnswer) {
@@ -185,12 +184,16 @@ public class TakeQuizScreen implements ControlledScreen {
     }
 
     private void recordAnswer() {
+        QuizQuestion currentQuestion = shuffledQuestions.get(currentQuestionIndex);
         Toggle selectedToggle = optionsGroup.getSelectedToggle();
         if (selectedToggle != null) {
             int selectedIndex = (Integer) selectedToggle.getUserData();
-            selectedAnswers.set(currentQuestionIndex, selectedIndex);
+            currentQuestion.setUserAnswerIndex(selectedIndex);
+            currentQuestion.setSkipped(false); // If an answer is recorded, it's not skipped
         } else {
-            selectedAnswers.set(currentQuestionIndex, -1); // No answer selected
+            // If no toggle is selected, we don't change the state.
+            // A question is only "skipped" via the skip button.
+            // An unanswered question has userAnswerIndex of -1 by default.
         }
     }
 
@@ -216,7 +219,10 @@ public class TakeQuizScreen implements ControlledScreen {
 
     @FXML
     private void handleSkipButtonAction(ActionEvent event) {
-        selectedAnswers.set(currentQuestionIndex, -1); // Mark as skipped
+        QuizQuestion currentQuestion = shuffledQuestions.get(currentQuestionIndex);
+        currentQuestion.setUserAnswerIndex(-1);
+        currentQuestion.setSkipped(true);
+
         if (currentQuestionIndex < shuffledQuestions.size() - 1) {
             currentQuestionIndex++;
             loadQuestion(currentQuestionIndex);
@@ -277,7 +283,7 @@ public class TakeQuizScreen implements ControlledScreen {
             LOGGER.info("[TakeQuizScreen submitQuiz] ReviewController is initialized. Navigating to review screen for pre-submission review.");
             // Pass the original shuffledQuestions (ungraded) and selectedAnswers.
             // ReviewScreenController will handle displaying these for user modification.
-            this.reviewController.setData(new ArrayList<>(shuffledQuestions), new ArrayList<>(selectedAnswers), timeTakenMillis);
+            this.reviewController.setData(new ArrayList<>(shuffledQuestions), timeTakenMillis);
             screenManager.setScreen(LeanerSDTS.ReviewScreenID);
         } else {
             LOGGER.severe("[TakeQuizScreen submitQuiz] ReviewScreenController is STILL NOT initialized after lazy attempt. Cannot navigate to review screen.");
@@ -294,6 +300,7 @@ public class TakeQuizScreen implements ControlledScreen {
         quizTimer = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer()));
         quizTimer.setCycleCount(Timeline.INDEFINITE);
         quizTimer.play();
+        updateTimer(); // Immediately update the timer display
         LOGGER.info("[TakeQuizScreen] Quiz timer started.");
     }
 

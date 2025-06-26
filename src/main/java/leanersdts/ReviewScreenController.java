@@ -24,14 +24,13 @@ public class ReviewScreenController implements ControlledScreen {
 
     private ScreenManager screenManager;
     private List<QuizQuestion> shuffledQuestions;
-    private List<Integer> currentSelectedAnswers; // Stores the indices of selected answers by the user
+
     private long timeTakenMillis;
     private boolean isPreSubmissionReviewMode = true; // Default to pre-submission interactive review
 
     // setData for the initial review (pre-submission, interactive)
-    public void setData(List<QuizQuestion> questions, List<Integer> answersFromQuiz, long timeTakenMillis) {
+    public void setData(List<QuizQuestion> questions, long timeTakenMillis) {
         this.shuffledQuestions = new ArrayList<>(questions); // Use copies to avoid modifying original lists from TakeQuizScreen
-        this.currentSelectedAnswers = new ArrayList<>(answersFromQuiz);
         this.timeTakenMillis = timeTakenMillis;
         this.isPreSubmissionReviewMode = true;
         System.out.println("ReviewScreenController: setData called for Pre-Submission Review.");
@@ -40,9 +39,8 @@ public class ReviewScreenController implements ControlledScreen {
     }
 
     // setData for the post-results review (read-only, graded)
-    public void setDataForPostResults(List<QuizQuestion> gradedQuestions, List<Integer> finalAnswers, long timeTakenMillis) {
+    public void setDataForPostResults(List<QuizQuestion> gradedQuestions, long timeTakenMillis) {
         this.shuffledQuestions = new ArrayList<>(gradedQuestions);
-        this.currentSelectedAnswers = new ArrayList<>(finalAnswers);
         this.timeTakenMillis = timeTakenMillis; // This might not be relevant here or could be quiz completion time
         this.isPreSubmissionReviewMode = false;
         System.out.println("ReviewScreenController: setDataForPostResults called.");
@@ -55,8 +53,8 @@ public class ReviewScreenController implements ControlledScreen {
             System.err.println("ReviewScreenController: reviewContainer is null.");
             return;
         }
-        if (shuffledQuestions == null || currentSelectedAnswers == null) {
-            System.err.println("ReviewScreenController: Cannot load review content. Questions or answers list is null.");
+        if (shuffledQuestions == null) {
+            System.err.println("ReviewScreenController: Cannot load review content. Questions list is null.");
             reviewContainer.getChildren().clear(); // Clear even if data is null to avoid stale display
             Label errorLabel = new Label("Could not load review content. Data is missing.");
             reviewContainer.getChildren().add(errorLabel);
@@ -109,7 +107,7 @@ public class ReviewScreenController implements ControlledScreen {
                     rb.setToggleGroup(optionsGroup);
                     rb.setWrapText(true);
                     rb.getStyleClass().add("review-option-radio");
-                    if (this.currentSelectedAnswers.get(i) != null && this.currentSelectedAnswers.get(i) == j) {
+                    if (question.getUserAnswerIndex() == j) {
                         rb.setSelected(true);
                     }
                     optionsVBox.getChildren().add(rb);
@@ -117,7 +115,7 @@ public class ReviewScreenController implements ControlledScreen {
                 questionBox.getChildren().add(optionsVBox);
             } else {
                 // Post-results review: Display user's answer and correct/incorrect styling
-                int finalAnswerIndex = currentSelectedAnswers.get(i);
+                int finalAnswerIndex = question.getUserAnswerIndex();
                 String userAnswerText = "Not Answered";
                 if (finalAnswerIndex != -1 && finalAnswerIndex < question.getOptions().length) {
                     userAnswerText = question.getOptions()[finalAnswerIndex];
@@ -185,52 +183,45 @@ public class ReviewScreenController implements ControlledScreen {
             return;
         }
 
-        if (shuffledQuestions == null || currentSelectedAnswers == null) {
+                if (shuffledQuestions == null) {
             System.err.println("Error: Quiz data not available for final submission.");
             AlertMaker.showErrorMessage("Submission Error", "Quiz data is missing. Cannot submit.");
             return;
         }
 
-        // 1. Collect final answers from the interactive RadioButtons
-        List<Integer> finalAnswersFromReview = new ArrayList<>();
-        int questionCounter = 0; // To map UI elements back to shuffledQuestions
+        // 1. Collect final answers from the interactive RadioButtons and update question objects
+        int questionCounter = 0;
         for (javafx.scene.Node node : reviewContainer.getChildren()) {
             if (node instanceof VBox) { // Each VBox is a questionBox
+                if (questionCounter >= shuffledQuestions.size()) break;
+
                 VBox questionBox = (VBox) node;
                 ToggleGroup group = null;
-                // Find the ToggleGroup within this questionBox
                 for (javafx.scene.Node childNode : questionBox.getChildren()) {
-                    if (childNode instanceof VBox) { // The VBox holding radio buttons
+                    if (childNode instanceof VBox) {
                         VBox optionsVBox = (VBox) childNode;
                         if (!optionsVBox.getChildren().isEmpty() && optionsVBox.getChildren().get(0) instanceof RadioButton) {
                             group = ((RadioButton) optionsVBox.getChildren().get(0)).getToggleGroup();
-                            break; // Found the toggle group for this question
+                            break;
                         }
                     }
                 }
 
+                QuizQuestion question = shuffledQuestions.get(questionCounter);
                 if (group != null && group.getSelectedToggle() != null) {
-                    finalAnswersFromReview.add((Integer) group.getSelectedToggle().getUserData());
+                    question.setUserAnswerIndex((Integer) group.getSelectedToggle().getUserData());
                 } else {
-                    finalAnswersFromReview.add(-1); // No answer selected for this question (skipped)
+                    question.setUserAnswerIndex(-1); // No answer selected
                 }
                 questionCounter++;
-                if (questionCounter >= shuffledQuestions.size()) break; // Should not happen if UI matches data
             }
         }
-        
-        if (finalAnswersFromReview.size() != shuffledQuestions.size()) {
-            System.err.println("CRITICAL: Mismatch in collecting final answers (" + finalAnswersFromReview.size() + ") vs number of questions (" + shuffledQuestions.size() + "). Aborting.");
-            AlertMaker.showErrorMessage("Submission Error", "Could not collect all reviewed answers. Please try again.");
-            return;
-        }
-        this.currentSelectedAnswers = finalAnswersFromReview; // Update with answers from the review screen
 
         // 2. Perform Grading
         int score = 0;
         for (int i = 0; i < shuffledQuestions.size(); i++) {
             QuizQuestion question = shuffledQuestions.get(i);
-            int answerIdx = this.currentSelectedAnswers.get(i);
+            int answerIdx = question.getUserAnswerIndex();
             question.setUserAnswerIndex(answerIdx); // Set the final user answer on the question object
             if (answerIdx != -1) { // If an answer was made
                 question.setCorrect(answerIdx == question.getCorrectAnswerIndex());
@@ -250,7 +241,7 @@ public class ReviewScreenController implements ControlledScreen {
             if (loaded) {
                 ResultsScreenController resultsController = (ResultsScreenController) screenManager.getController(LeanerSDTS.ResultsScreenID);
                 if (resultsController != null) {
-                    resultsController.setData(score, shuffledQuestions.size(), this.timeTakenMillis, this.shuffledQuestions, this.currentSelectedAnswers);
+                    resultsController.setData(score, shuffledQuestions.size(), this.timeTakenMillis, this.shuffledQuestions);
                     screenManager.setScreen(LeanerSDTS.ResultsScreenID);
                 } else {
                     System.err.println("Error: Could not retrieve ResultsScreenController after final submission.");
@@ -315,7 +306,6 @@ public class ReviewScreenController implements ControlledScreen {
     public void cleanup() {
         reviewContainer.getChildren().clear();
         shuffledQuestions = null;
-        currentSelectedAnswers = null;
     }
 
     @FXML

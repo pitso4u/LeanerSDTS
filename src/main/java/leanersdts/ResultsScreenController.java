@@ -26,7 +26,6 @@ public class ResultsScreenController implements ControlledScreen {
 
     private ScreenManager screenManager;
     private List<QuizQuestion> questionsForReview;
-    private List<Integer> userAnswersForReview;
     private long timeTakenMillis; // Added field to store time taken
 
     @Override
@@ -34,9 +33,8 @@ public class ResultsScreenController implements ControlledScreen {
         this.screenManager = screenParent;
     }
 
-    public void setData(int score, int totalQuestions, long timeMillis, List<QuizQuestion> questions, List<Integer> userAnswers) {
+    public void setData(int score, int totalQuestions, long timeMillis, List<QuizQuestion> questions) {
         this.questionsForReview = questions;
-        this.userAnswersForReview = userAnswers;
         this.timeTakenMillis = timeMillis; // Store timeMillis
 
         double percentage = totalQuestions > 0 ? ((double) score / totalQuestions) * 100 : 0;
@@ -82,7 +80,7 @@ public class ResultsScreenController implements ControlledScreen {
                     // ResultsScreen stores timeTakenMillis, pass it back if user reviews from results.
                     // Assuming this.timeTakenMillis holds the original quiz duration for this results set.
                     // Call setDataForPostResults for read-only, graded review mode.
-                    reviewController.setDataForPostResults(questionsForReview, userAnswersForReview, this.timeTakenMillis);
+                    reviewController.setDataForPostResults(questionsForReview, this.timeTakenMillis);
                     screenManager.setScreen(LeanerSDTS.ReviewScreenID);
                 } else {
                     LOGGER.log(Level.SEVERE, "Could not retrieve ReviewScreenController.");
@@ -120,6 +118,5 @@ public class ResultsScreenController implements ControlledScreen {
     public void cleanup() {
         // Optional: Cleanup resources when screen is changed
         this.questionsForReview = null;
-        this.userAnswersForReview = null;
     }
 }

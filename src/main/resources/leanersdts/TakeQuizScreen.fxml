@@ -25,7 +25,7 @@
                 <HBox alignment="CENTER_LEFT" spacing="10">
                     <children>
                         <Label text="Quiz Progress" styleClass="progress-label" />
-                        <ProgressBar fx:id="progressBar" prefWidth="Infinity" HBox.hgrow="ALWAYS" />
+                        <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                         <Label fx:id="timerLabel" styleClass="timer-label" text="00:00" />
                     </children>
                 </HBox>
@@ -38,6 +38,7 @@
                 <Insets bottom="20" left="50" right="50" top="20" />
             </BorderPane.margin>
             <children>
+                <Label fx:id="questionPositionLabel" styleClass="question-position-label" text="Question 0 of 0" />
                 <Text fx:id="questionLabel" styleClass="question-text" text="What is the capital of France?" textAlignment="CENTER" wrappingWidth="800.0" />
                 <ImageView fx:id="questionImageView" fitHeight="200.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
                 <VBox fx:id="optionsContainer" alignment="CENTER" spacing="15">
