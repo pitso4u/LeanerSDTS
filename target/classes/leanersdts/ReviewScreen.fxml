@@ -36,11 +36,13 @@
         </ScrollPane>
 
         <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Text Size:" />
-            <Slider fx:id="textSizeSlider" min="12" max="24" value="14" blockIncrement="1" />
+            <children>
+                <Label text="Font Size:" styleClass="font-size-label" />
+                <Slider fx:id="fontSizeSlider" min="12" max="32" value="18" blockIncrement="2" showTickMarks="true" showTickLabels="true" majorTickUnit="10" minorTickCount="4" onValueChange="#handleFontSizeChange" prefWidth="300" />
+            </children>        
         </HBox>
 
-        <HBox alignment="CENTER" spacing="20">
+        <HBox alignment="CENTER" spacing="20" styleClass="navigation-bar">
             <Button fx:id="backButton" onAction="#handleBackAction" text="Back to Summary" />
             <Button fx:id="previousButton" onAction="#handlePreviousAction" text="Previous" />
             <Button fx:id="nextButton" onAction="#handleNextAction" text="Next" />
