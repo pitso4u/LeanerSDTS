@@ -19,6 +19,14 @@ public class ProgressTracking {
     private int totalSkipped;
     private int totalTime;
     private int totalAttempts;
+    
+    // Category-specific fields for enhanced results display
+    private int signsCorrect;
+    private int signsTotal;
+    private int rulesCorrect;
+    private int rulesTotal;
+    private int controlsCorrect;
+    private int controlsTotal;
 
     public ProgressTracking(String learnerId, String moduleName, int quizScore, boolean passed,
                           String dateCompleted, int totalQuestions, String correctAnswers,
@@ -40,6 +48,45 @@ public class ProgressTracking {
         this.totalSkipped = totalSkipped;
         this.totalTime = totalTime;
         this.totalAttempts = totalAttempts;
+        
+        // Initialize category fields to zero by default
+        this.signsCorrect = 0;
+        this.signsTotal = 0;
+        this.rulesCorrect = 0;
+        this.rulesTotal = 0;
+        this.controlsCorrect = 0;
+        this.controlsTotal = 0;
+    }
+    
+    // Additional constructor with category breakdown
+    public ProgressTracking(String learnerId, String moduleName, int quizScore, boolean passed,
+                          String dateCompleted, int totalQuestions, String correctAnswers,
+                          String wrongAnswers, String skippedAnswers, String timeTaken,
+                          int totalCorrect, int totalWrong, int totalSkipped, int totalTime,
+                          int totalAttempts, int signsCorrect, int signsTotal, 
+                          int rulesCorrect, int rulesTotal, int controlsCorrect, int controlsTotal) {
+        this(learnerId, moduleName, quizScore, passed, dateCompleted, totalQuestions,
+             correctAnswers, wrongAnswers, skippedAnswers, timeTaken,
+             totalCorrect, totalWrong, totalSkipped, totalTime, totalAttempts);
+             
+        this.signsCorrect = signsCorrect;
+        this.signsTotal = signsTotal;
+        this.rulesCorrect = rulesCorrect;
+        this.rulesTotal = rulesTotal;
+        this.controlsCorrect = controlsCorrect;
+        this.controlsTotal = controlsTotal;
+    }
+    
+    // Default constructor for JSON deserialization
+    public ProgressTracking() {
+        // Default values
+        this.learnerId = "";
+        this.moduleName = "";
+        this.dateCompleted = LocalDate.now().toString();
+        this.correctAnswers = "";
+        this.wrongAnswers = "";
+        this.skippedAnswers = "";
+        this.timeTaken = "";
     }
 
     // Getters
@@ -58,6 +105,17 @@ public class ProgressTracking {
     public int getTotalSkipped() { return totalSkipped; }
     public int getTotalTime() { return totalTime; }
     public int getTotalAttempts() { return totalAttempts; }
+    
+    // Category-specific getters
+    public int getSignsCorrect() { return signsCorrect; }
+    public int getSignsTotal() { return signsTotal; }
+    public int getRulesCorrect() { return rulesCorrect; }
+    public int getRulesTotal() { return rulesTotal; }
+    public int getControlsCorrect() { return controlsCorrect; }
+    public int getControlsTotal() { return controlsTotal; }
+    
+    // Alias for dateCompleted to match method name used in ResultsScreenController
+    public String getDate() { return dateCompleted; }
 
     // Setters
     public void setLearnerId(String learnerId) { this.learnerId = learnerId; }
@@ -75,6 +133,17 @@ public class ProgressTracking {
     public void setTotalSkipped(int totalSkipped) { this.totalSkipped = totalSkipped; }
     public void setTotalTime(int totalTime) { this.totalTime = totalTime; }
     public void setTotalAttempts(int totalAttempts) { this.totalAttempts = totalAttempts; }
+    
+    // Category-specific setters
+    public void setSignsCorrect(int signsCorrect) { this.signsCorrect = signsCorrect; }
+    public void setSignsTotal(int signsTotal) { this.signsTotal = signsTotal; }
+    public void setRulesCorrect(int rulesCorrect) { this.rulesCorrect = rulesCorrect; }
+    public void setRulesTotal(int rulesTotal) { this.rulesTotal = rulesTotal; }
+    public void setControlsCorrect(int controlsCorrect) { this.controlsCorrect = controlsCorrect; }
+    public void setControlsTotal(int controlsTotal) { this.controlsTotal = controlsTotal; }
+    
+    // Alias for setDateCompleted to match method name used in ResultsScreenController
+    public void setDate(String date) { this.dateCompleted = date; }
 
     @Override
     public String toString() {
@@ -83,11 +152,14 @@ public class ProgressTracking {
             "passed=%b, dateCompleted='%s', totalQuestions=%d, " +
             "correctAnswers='%s', wrongAnswers='%s', skippedAnswers='%s', " +
             "timeTaken='%s', totalCorrect=%d, totalWrong=%d, " +
-            "totalSkipped=%d, totalTime=%d, totalAttempts=%d}",
+            "totalSkipped=%d, totalTime=%d, totalAttempts=%d, " +
+            "signsCorrect=%d, signsTotal=%d, rulesCorrect=%d, rulesTotal=%d, " +
+            "controlsCorrect=%d, controlsTotal=%d}",
             learnerId, moduleName, quizScore, passed, dateCompleted,
             totalQuestions, correctAnswers, wrongAnswers, skippedAnswers,
             timeTaken, totalCorrect, totalWrong, totalSkipped, totalTime,
-            totalAttempts
+            totalAttempts, signsCorrect, signsTotal, rulesCorrect, rulesTotal,
+            controlsCorrect, controlsTotal
         );
     }
-} 
+}

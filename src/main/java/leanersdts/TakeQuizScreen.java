@@ -31,6 +31,10 @@ public class TakeQuizScreen implements ControlledScreen {
     private Label timerLabel;
     @FXML
     private Label questionPositionLabel;
+    @FXML
+    private Label learnerNameLabel;
+    @FXML
+    private Slider fontSizeSlider;
 
     @FXML
     private Text questionLabel;
@@ -59,12 +63,24 @@ public class TakeQuizScreen implements ControlledScreen {
     private Instant quizEndTime;
     private long quizStartTimeMillis;
     private ReviewScreenController reviewController;
+    private String learnerName = "";
 
     @Override
     public void setScreenParent(ScreenManager screenParent) {
         this.screenManager = screenParent;
         // reviewController will be initialized lazily in submitQuiz()
         LOGGER.info("[TakeQuizScreen setScreenParent] ScreenManager set. ReviewController will be fetched on demand.");
+    }
+
+    /**
+     * Sets the learner name to be displayed in the UI
+     * @param name The learner's name
+     */
+    public void setLearnerName(String name) {
+        this.learnerName = name;
+        if (learnerNameLabel != null) {
+            learnerNameLabel.setText("Learner: " + name);
+        }
     }
 
     @FXML
@@ -77,6 +93,17 @@ public class TakeQuizScreen implements ControlledScreen {
         optionsContainer.getChildren().clear();
         setNavButtonsDisable(true); // Disable all navigation buttons initially
 
+        // Initialize font size slider
+        if (fontSizeSlider != null) {
+            fontSizeSlider.setValue(18); // Default font size
+            // Apply initial font size
+            applyFontSize(18);
+        }
+
+        // Initialize learner name if already set
+        if (learnerNameLabel != null && learnerName != null && !learnerName.isEmpty()) {
+            learnerNameLabel.setText("Learner: " + learnerName);
+        }
     }
 
     public void loadQuizDataAndStart() {
@@ -338,7 +365,7 @@ public class TakeQuizScreen implements ControlledScreen {
         }
 
         if (previousButton != null) previousButton.setDisable(currentQuestionIndex == 0);
-        
+
         boolean isLastQuestion = (currentQuestionIndex == shuffledQuestions.size() - 1);
         if (nextButton != null) nextButton.setDisable(isLastQuestion);
         if (skipButton != null) skipButton.setDisable(isLastQuestion);
@@ -360,10 +387,40 @@ public class TakeQuizScreen implements ControlledScreen {
         alert.showAndWait();
     }
 
+    /**
+     * Handles font size slider value changes
+     */
+    @FXML
+    private void handleFontSizeChange() {
+        if (fontSizeSlider != null) {
+            double fontSize = fontSizeSlider.getValue();
+            applyFontSize(fontSize);
+        }
+    }
+
+    /**
+     * Applies the selected font size to question text and option buttons
+     * @param fontSize The font size to apply
+     */
+    private void applyFontSize(double fontSize) {
+        // Apply to question text
+        if (questionLabel != null) {
+            questionLabel.setStyle("-fx-font-size: " + fontSize + "px;");
+        }
+
+        // Apply to option buttons
+        if (optionsContainer != null) {
+            for (Node node : optionsContainer.getChildren()) {
+                if (node instanceof ToggleButton) {
+                    node.setStyle("-fx-font-size: " + fontSize + "px;");
+                }
+            }
+        }
+    }
+
     @Override
     public void runOnScreenChange() {}
 
-    
     @Override
     public void cleanup() {
         if (quizTimer != null) {

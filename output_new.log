@@ -3,9 +3,9 @@
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: login
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: login
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: dashboard from file: DashboardScreen.fxml
-Jun 26, 2025 9:02:15 AM leanersdts.DashboardScreen initialize
+Jun 27, 2025 6:45:09 PM leanersdts.DashboardScreen initialize
 INFO: [DashboardScreen] initialize() called.
-Jun 26, 2025 9:02:15 AM leanersdts.DashboardScreen initialize
+Jun 27, 2025 6:45:09 PM leanersdts.DashboardScreen initialize
 INFO: DashboardScreen initialized.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: dashboard
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: dashboard
@@ -23,9 +23,9 @@ INFO: DashboardScreen initialized.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: VehicleMaintenanceModuleScreen
 [JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Attempting to load TakeQuizScreen FXML.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: TakeQuizScreen from file: TakeQuizScreen.fxml
-Jun 26, 2025 9:02:15 AM leanersdts.TakeQuizScreen initialize
+Jun 27, 2025 6:45:10 PM leanersdts.TakeQuizScreen initialize
 INFO: [TakeQuizScreen] Initializing new quiz screen UI.
-Jun 26, 2025 9:02:15 AM leanersdts.TakeQuizScreen setScreenParent
+Jun 27, 2025 6:45:10 PM leanersdts.TakeQuizScreen setScreenParent
 INFO: [TakeQuizScreen setScreenParent] ScreenManager set. ReviewController will be fetched on demand.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: TakeQuizScreen
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: TakeQuizScreen
@@ -44,66 +44,80 @@ INFO: [TakeQuizScreen setScreenParent] ScreenManager set. ReviewController will 
 [JavaFX Application Thread] INFO leanersdts.LeanerSDTS - [LeanerSDTS] Server discovery process initiated.
 [JavaFX Application Thread] INFO leanersdts.LeanerSDTS - Application started successfully, discovery initiated.
 [pool-2-thread-1] INFO leanersdts.ServerDiscovery - Sent discovery packet to /255.255.255.255:3579
-[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Received broadcast: {"ip":"192.168.89.251","port":3003} from 192.168.89.251
-Jun 26, 2025 9:02:16 AM leanersdts.ServerConnector setBaseUrl
-INFO: [ServerConnector] Setting baseUrl to: http://192.168.89.251:3003/
-[pool-2-thread-1] INFO leanersdts.LeanerSDTS - [LeanerSDTS] onServerDiscovered: ServerConnector.baseUrl set to: http://192.168.89.251:3003/
-[pool-2-thread-1] INFO leanersdts.LeanerSDTS - Server discovered: http://192.168.89.251:3003/
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Receive timeout, sending another broadcast
+[pool-2-thread-1] INFO leanersdts.ServerDiscovery - Received broadcast: {"ip":"192.168.242.251","port":3003} from 192.168.242.251
+Jun 27, 2025 6:46:47 PM leanersdts.ServerConnector setBaseUrl
+INFO: [ServerConnector] Setting baseUrl to: http://192.168.242.251:3003/
+[pool-2-thread-1] INFO leanersdts.LeanerSDTS - [LeanerSDTS] onServerDiscovered: ServerConnector.baseUrl set to: http://192.168.242.251:3003/
+[pool-2-thread-1] INFO leanersdts.LeanerSDTS - Server discovered: http://192.168.242.251:3003/
 [pool-2-thread-1] INFO leanersdts.ServerDiscovery - Discovery socket closed
 [pool-2-thread-1] INFO leanersdts.ServerDiscovery - Discovery executor service shut down
 [JavaFX Application Thread] INFO leanersdts.LoginScreen - Login attempt for user: mosa
-Jun 26, 2025 9:02:21 AM leanersdts.ServerConnector validateLogin
-INFO: [ServerConnector] validateLogin called. Current baseUrl: http://192.168.89.251:3003/
+Jun 27, 2025 6:48:41 PM leanersdts.ServerConnector validateLogin
+INFO: [ServerConnector] validateLogin called. Current baseUrl: http://192.168.242.251:3003/
 [JavaFX Application Thread] INFO leanersdts.LoginScreen - Successful login for user: mosa
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: dashboard
-Jun 26, 2025 9:02:23 AM leanersdts.DashboardScreen handleTakeQuizButtonAction
+Jun 27, 2025 6:48:43 PM leanersdts.DashboardScreen handleTakeQuizButtonAction
 INFO: [DashboardScreen] handleTakeQuizButtonAction called. Attempting to set screen to TakeQuizScreenID.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: TakeQuizScreen
-Jun 26, 2025 9:02:23 AM leanersdts.DashboardScreen handleTakeQuizButtonAction
+Jun 27, 2025 6:48:43 PM leanersdts.DashboardScreen handleTakeQuizButtonAction
 INFO: [DashboardScreen] Calling loadQuizDataAndStart() on TakeQuizScreen.
-Jun 26, 2025 9:02:23 AM leanersdts.TakeQuizScreen loadQuizDataAndStart
+Jun 27, 2025 6:48:43 PM leanersdts.TakeQuizScreen loadQuizDataAndStart
 INFO: [TakeQuizScreen] Loading quiz data and starting quiz.
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector getRandomQuizQuestions
-INFO: [ServerConnector] getRandomQuizQuestions called for 20 questions. Current baseUrl: http://192.168.89.251:3003/
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector getRandomQuizQuestions
-INFO: [ServerConnector] Fetching all questions from controls, signs, and rules categories.
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector fetchQuestionsFromCategory
-INFO: [ServerConnector] Fetching questions from category: controls. URL: http://192.168.89.251:3003/api/questions/controls?count=20 (Note: Server currently returns all questions from this category)
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector fetchQuestionsFromCategory
-INFO: [ServerConnector] Fetching questions from category: signs. URL: http://192.168.89.251:3003/api/questions/signs?count=20 (Note: Server currently returns all questions from this category)
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector fetchQuestionsFromCategory
-INFO: [ServerConnector] Fetching questions from category: rules. URL: http://192.168.89.251:3003/api/questions/rules?count=20 (Note: Server currently returns all questions from this category)
-Jun 26, 2025 9:02:23 AM leanersdts.ServerConnector getRandomQuizQuestions
-INFO: [ServerConnector] Total questions fetched: 234. Selected for quiz: 20
-Jun 26, 2025 9:02:23 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/highoccupancyvehiclelanereservationsign.png
-Jun 26, 2025 9:02:23 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/highoccupancyvehiclelanereservationsign.png
-Jun 26, 2025 9:02:23 AM leanersdts.TakeQuizScreen startQuizTimer
+Jun 27, 2025 6:48:43 PM leanersdts.ServerConnector getQuizQuestions
+INFO: [ServerConnector] getQuizQuestions called. Fetching structured quiz set. Current baseUrl: http://192.168.242.251:3003/
+Jun 27, 2025 6:48:43 PM leanersdts.ServerConnector fetchQuestionsFromCategory
+INFO: [ServerConnector] Fetching questions from category: signs. URL: http://192.168.242.251:3003/api/questions/signs?count=28 (Note: Server currently returns all questions from this category)
+Jun 27, 2025 6:48:43 PM leanersdts.ServerConnector fetchQuestionsFromCategory
+INFO: [ServerConnector] Fetching questions from category: rules. URL: http://192.168.242.251:3003/api/questions/rules?count=28 (Note: Server currently returns all questions from this category)
+Jun 27, 2025 6:48:43 PM leanersdts.ServerConnector fetchQuestionsFromCategory
+INFO: [ServerConnector] Fetching questions from category: controls. URL: http://192.168.242.251:3003/api/questions/controls?count=8 (Note: Server currently returns all questions from this category)
+Jun 27, 2025 6:48:43 PM leanersdts.ServerConnector getQuizQuestions
+INFO: [ServerConnector] Successfully created structured quiz. Total questions: 64 (Signs: 28, Rules: 28, Controls: 8)
+Jun 27, 2025 6:48:43 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 6:48:43 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 6:48:43 PM leanersdts.TakeQuizScreen startQuizTimer
 INFO: [TakeQuizScreen] Quiz timer started.
-Jun 26, 2025 9:02:44 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:02:44 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:02:47 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/parknoonsign.png
-Jun 26, 2025 9:02:47 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/parknoonsign.png
-Jun 26, 2025 9:02:57 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:02:57 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:03:00 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/narrowbridgesign.png
-Jun 26, 2025 9:03:00 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/narrowbridgesign.png
-Jun 26, 2025 9:03:09 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
-Jun 26, 2025 9:03:09 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
-Jun 26, 2025 9:03:09 AM leanersdts.TakeQuizScreen lambda$loadQuestion$0
-SEVERE: Error loading image from URL: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
-java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
+Jun 27, 2025 6:56:36 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
+Jun 27, 2025 6:56:36 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
+Jun 27, 2025 6:56:36 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
 	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
 	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
@@ -114,7 +128,7 @@ java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://1
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -137,7 +151,7 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	... 1 more
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/StopSignAhead.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/DisabledPersons.jpg
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
@@ -147,13 +161,45 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
 	... 10 more
 
-Jun 26, 2025 9:03:16 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
-Jun 26, 2025 9:03:16 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
-Jun 26, 2025 9:03:16 AM leanersdts.TakeQuizScreen lambda$loadQuestion$0
-SEVERE: Error loading image from URL: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
-java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
+Jun 27, 2025 6:56:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/allowtoovertake.png
+Jun 27, 2025 6:56:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/allowtoovertake.png
+Jun 27, 2025 6:56:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:56:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:56:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/noovertakingsignandnocrossing.png
+Jun 27, 2025 6:56:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/noovertakingsignandnocrossing.png
+Jun 27, 2025 6:56:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/goodsvehiclesign.png
+Jun 27, 2025 6:56:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/goodsvehiclesign.png
+Jun 27, 2025 6:57:14 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:57:14 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:57:18 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:57:18 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:57:29 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:57:29 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:57:32 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/witdthlimitsign.png
+Jun 27, 2025 6:57:32 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/witdthlimitsign.png
+Jun 27, 2025 6:57:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
+Jun 27, 2025 6:57:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
+Jun 27, 2025 6:57:54 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
 	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
 	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
@@ -164,7 +210,7 @@ java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://1
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -187,7 +233,7 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	... 1 more
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/SwitchOffHeadLights.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/AlternativeRoute.png
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
@@ -197,13 +243,33 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
 	... 10 more
 
-Jun 26, 2025 9:03:51 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
-Jun 26, 2025 9:03:51 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
-Jun 26, 2025 9:03:51 AM leanersdts.TakeQuizScreen lambda$loadQuestion$0
-SEVERE: Error loading image from URL: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
-java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
+Jun 27, 2025 6:57:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:57:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:58:04 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:58:04 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:58:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:58:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:58:30 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 6:58:30 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 6:58:36 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/waystopsign.png
+Jun 27, 2025 6:58:36 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/waystopsign.png
+Jun 27, 2025 6:58:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
+Jun 27, 2025 6:58:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
+Jun 27, 2025 6:58:44 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
 	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
 	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
@@ -214,7 +280,7 @@ java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://1
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -237,7 +303,7 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	... 1 more
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/EndTollRoute.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SlowMovingTraffic.png
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
@@ -247,13 +313,21 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
 	... 10 more
 
-Jun 26, 2025 9:03:58 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
-Jun 26, 2025 9:03:58 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
-Jun 26, 2025 9:03:58 AM leanersdts.TakeQuizScreen lambda$loadQuestion$0
-SEVERE: Error loading image from URL: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
-java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
+Jun 27, 2025 6:58:51 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/highoccupancyvehiclelanereservationsign.png
+Jun 27, 2025 6:58:51 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/highoccupancyvehiclelanereservationsign.png
+Jun 27, 2025 6:59:02 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 6:59:02 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 6:59:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/SpeedHump.png
+Jun 27, 2025 6:59:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/SpeedHump.png
+Jun 27, 2025 6:59:07 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/SpeedHump.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SpeedHump.png
 	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
 	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
@@ -264,7 +338,7 @@ java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://1
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SpeedHump.png
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -287,7 +361,7 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	... 1 more
-Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads/OppositeRightLane.png
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/SpeedHump.png
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
 	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
@@ -297,62 +371,332 @@ Caused by: java.io.FileNotFoundException: http://192.168.89.251:3003/api/uploads
 	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
 	... 10 more
 
-Jun 26, 2025 9:04:02 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 6:59:10 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:04:02 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 6:59:10 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:04:13 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/waystopsign.png
-Jun 26, 2025 9:04:13 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/waystopsign.png
-Jun 26, 2025 9:04:21 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 6:59:18 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/sharpcurvetotheleftsign.png
+Jun 27, 2025 6:59:18 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/sharpcurvetotheleftsign.png
+Jun 27, 2025 7:11:01 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:04:21 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:01 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:04:26 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:11:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:11:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/sos.png
+Jun 27, 2025 7:11:07 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/sos.png
+Jun 27, 2025 7:11:13 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:04:26 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:13 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:04:30 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/tjunctionyeildsign.png
-Jun 26, 2025 9:04:30 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/tjunctionyeildsign.png
-Jun 26, 2025 9:04:33 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:16 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/accidentdownhill.png
+Jun 27, 2025 7:11:16 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/accidentdownhill.png
+Jun 27, 2025 7:11:24 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/goodsvehicleminimumlimitsign.png
+Jun 27, 2025 7:11:24 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/goodsvehicleminimumlimitsign.png
+Jun 27, 2025 7:11:37 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:04:33 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:37 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:04:44 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:53 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:04:44 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:11:53 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:04:53 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/donkycarriersign.png
-Jun 26, 2025 9:04:53 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/donkycarriersign.png
-Jun 26, 2025 9:05:07 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:05:07 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:05:11 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:05:11 AM leanersdts.TakeQuizScreen loadQuestion
-INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.89.251:3003/api/uploads/VehicleControls.png
-Jun 26, 2025 9:05:14 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:12:00 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/noparkinglongerthen60min.png
+Jun 27, 2025 7:12:00 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/noparkinglongerthen60min.png
+Jun 27, 2025 7:12:05 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] Attempting to load image. URL received: null
-Jun 26, 2025 9:05:14 AM leanersdts.TakeQuizScreen loadQuestion
+Jun 27, 2025 7:12:05 PM leanersdts.TakeQuizScreen loadQuestion
 INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
+Jun 27, 2025 7:12:13 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:12:13 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:12:20 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:12:20 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:12:26 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:12:26 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:12:48 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:12:48 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:12:52 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:12:52 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:12:58 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/InformationSign.png
+Jun 27, 2025 7:12:58 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/InformationSign.png
+Jun 27, 2025 7:12:58 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/InformationSign.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/InformationSign.png
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/InformationSign.png
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2094)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2089)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:2088)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1646)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:101)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.access$001(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.lambda$call$0(PrismImageLoader2.java:262)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:261)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation.lambda$new$0(AbstractAsyncOperation.java:57)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 more
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/InformationSign.png
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
+	at java.base/java.net.URLConnection.getHeaderFieldLong(URLConnection.java:639)
+	at java.base/java.net.URLConnection.getContentLengthLong(URLConnection.java:509)
+	at java.base/java.net.URLConnection.getContentLength(URLConnection.java:493)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
+	... 10 more
+
+Jun 27, 2025 7:13:04 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:13:04 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:13:08 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/notbelow60.png
+Jun 27, 2025 7:13:08 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/notbelow60.png
+Jun 27, 2025 7:13:19 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:13:19 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:13:26 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+Jun 27, 2025 7:13:26 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+Jun 27, 2025 7:13:26 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2094)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2089)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:2088)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1646)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:101)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.access$001(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.lambda$call$0(PrismImageLoader2.java:262)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:261)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation.lambda$new$0(AbstractAsyncOperation.java:57)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 more
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/MaximumMassAxles.png
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
+	at java.base/java.net.URLConnection.getHeaderFieldLong(URLConnection.java:639)
+	at java.base/java.net.URLConnection.getContentLengthLong(URLConnection.java:509)
+	at java.base/java.net.URLConnection.getContentLength(URLConnection.java:493)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
+	... 10 more
+
+Jun 27, 2025 7:13:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:13:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:13:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:13:54 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:14:00 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:14:00 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:14:12 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/exclusiveparkingbayportmarking.png
+Jun 27, 2025 7:14:12 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/exclusiveparkingbayportmarking.png
+Jun 27, 2025 7:14:17 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/windyieldsign.png
+Jun 27, 2025 7:14:17 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/windyieldsign.png
+Jun 27, 2025 7:14:22 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/slowdownandgoright.png
+Jun 27, 2025 7:14:22 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/slowdownandgoright.png
+Jun 27, 2025 7:14:25 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/motorcarsignonly.png
+Jun 27, 2025 7:14:25 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/motorcarsignonly.png
+Jun 27, 2025 7:14:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/AbnormalVehiclesOnly.png
+Jun 27, 2025 7:14:44 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/AbnormalVehiclesOnly.png
+Jun 27, 2025 7:14:50 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:14:50 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:14:53 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/vehiclecontrols.png
+Jun 27, 2025 7:14:53 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/vehiclecontrols.png
+Jun 27, 2025 7:14:56 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/trafficcontrolaheadsign.png
+Jun 27, 2025 7:14:56 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/trafficcontrolaheadsign.png
+Jun 27, 2025 7:15:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:15:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:15:10 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/headlampsprohibited.png
+Jun 27, 2025 7:15:10 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/headlampsprohibited.png
+Jun 27, 2025 7:15:24 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:15:24 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:15:28 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/vehiclecontrols.png
+Jun 27, 2025 7:15:28 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/vehiclecontrols.png
+Jun 27, 2025 7:15:31 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:15:31 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:15:41 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:15:41 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:15:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/vehiclesexceedingmassonlysign.png
+Jun 27, 2025 7:15:49 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/vehiclesexceedingmassonlysign.png
+Jun 27, 2025 7:15:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+Jun 27, 2025 7:15:59 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+Jun 27, 2025 7:15:59 PM leanersdts.TakeQuizScreen lambda$loadQuestion$0
+SEVERE: Error loading image from URL: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+java.util.concurrent.ExecutionException: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation$1.run(AbstractAsyncOperation.java:66)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2094)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:2089)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:2088)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1646)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:101)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.access$001(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.lambda$call$0(PrismImageLoader2.java:262)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:261)
+	at javafx.graphics/com.sun.javafx.tk.quantum.PrismImageLoader2$AsyncImageLoader.call(PrismImageLoader2.java:225)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractAsyncOperation.lambda$new$0(AbstractAsyncOperation.java:57)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	... 1 more
+Caused by: java.io.FileNotFoundException: http://192.168.242.251:3003/api/uploads/OppositeRightLane.png
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:2033)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getHeaderField(HttpURLConnection.java:3293)
+	at java.base/java.net.URLConnection.getHeaderFieldLong(URLConnection.java:639)
+	at java.base/java.net.URLConnection.getContentLengthLong(URLConnection.java:509)
+	at java.base/java.net.URLConnection.getContentLength(URLConnection.java:493)
+	at javafx.graphics/com.sun.javafx.runtime.async.AbstractRemoteResource.call(AbstractRemoteResource.java:97)
+	... 10 more
+
+Jun 27, 2025 7:16:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: null
+Jun 27, 2025 7:16:05 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] No valid image URL provided for this question. Hiding ImageView.
+Jun 27, 2025 7:16:09 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:16:09 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/VehicleControls.png
+Jun 27, 2025 7:16:19 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Attempting to load image. URL received: http://192.168.242.251:3003/api/uploads/pedestrianpriority.png
+Jun 27, 2025 7:16:19 PM leanersdts.TakeQuizScreen loadQuestion
+INFO: [TakeQuizScreen] Image loading initiated for URL: http://192.168.242.251:3003/api/uploads/pedestrianpriority.png
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
 INFO: [TakeQuizScreen submitQuiz] Method started.
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
 INFO: [TakeQuizScreen submitQuiz] Attempting to lazily initialize ReviewScreenController.
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
 INFO: [TakeQuizScreen submitQuiz] screenManager.getScreen(ReviewScreenID) returned: leanersdts.ReviewScreen
 [JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen getControllerInstance] Returning controller: initialized
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
 INFO: [TakeQuizScreen submitQuiz] Successfully lazily initialized ReviewScreenController.
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
-INFO: [TakeQuizScreen submitQuiz] Quiz timer stopped. Time elapsed: 175437 ms
-Jun 26, 2025 9:05:19 AM leanersdts.TakeQuizScreen submitQuiz
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
+INFO: [TakeQuizScreen submitQuiz] Quiz timer stopped. Time elapsed: 1668434 ms
+Jun 27, 2025 7:16:32 PM leanersdts.TakeQuizScreen submitQuiz
 INFO: [TakeQuizScreen submitQuiz] ReviewController is initialized. Navigating to review screen for pre-submission review.
 ReviewScreenController: setData called for Pre-Submission Review.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: review
@@ -360,32 +704,5 @@ ReviewScreenController: setData called for Pre-Submission Review.
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: results
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: results
 [JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: results
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: review from file: ReviewScreen.fxml
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] FXMLLoader.getController() returned: leanersdts.ReviewScreenController
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] Successfully cast and assigned ReviewScreenController. this.controller is now: initialized
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: review
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: review
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen getControllerInstance] Returning controller: initialized
-ReviewScreenController: setDataForPostResults called.
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: review
-[ReviewScreenController] handleFilterAction called (post-results mode). Checkbox selected: true
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: results
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: review from file: ReviewScreen.fxml
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] FXMLLoader.getController() returned: leanersdts.ReviewScreenController
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] Successfully cast and assigned ReviewScreenController. this.controller is now: initialized
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: review
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: review
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen getControllerInstance] Returning controller: initialized
-ReviewScreenController: setDataForPostResults called.
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: review
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: results
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Loading screen: review from file: ReviewScreen.fxml
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] FXMLLoader.getController() returned: leanersdts.ReviewScreenController
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen Constructor] Successfully cast and assigned ReviewScreenController. this.controller is now: initialized
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Adding screen: review
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Successfully loaded screen: review
-[JavaFX Application Thread] INFO leanersdts.ReviewScreen - [ReviewScreen getControllerInstance] Returning controller: initialized
-ReviewScreenController: setDataForPostResults called.
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: review
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: results
-[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: TakeQuizScreen
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: dashboard
+[JavaFX Application Thread] INFO leanersdts.ScreenManager - Screen set successfully: login

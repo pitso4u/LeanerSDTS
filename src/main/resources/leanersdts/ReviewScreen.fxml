@@ -15,7 +15,7 @@
 <fx:root type="leanersdts.ReviewScreen" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
          fx:controller="leanersdts.ReviewScreenController">
     <stylesheets>
-        <String fx:value="/leanersdts/customstyles.css" />
+        <String fx:value="@customstyles.css" />
     </stylesheets>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

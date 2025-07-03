@@ -54,8 +54,32 @@ public class QuizSummaryScreen extends VBox implements ControlledScreen {
     @FXML private Button reviewIncorrectButton;
     @FXML private Button dashboardButton;
 
-    private final Image passIcon = new Image(QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/happy_face.jpeg"));
-    private final Image failIcon = new Image(QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/sad_face.jpeg"));
+    // Lazy-loaded images
+    private Image passIcon;
+    private Image failIcon;
+    
+    // Initialize images safely
+    private void initializeImages() {
+        try {
+            var passStream = QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/happy_face.jpeg");
+            if (passStream != null) {
+                passIcon = new Image(passStream);
+            } else {
+                logger.error("Could not load happy_face.jpeg image resource");
+                // Use a fallback or default image
+            }
+            
+            var failStream = QuizSummaryScreen.class.getClassLoader().getResourceAsStream("Images/sad_face.jpeg");
+            if (failStream != null) {
+                failIcon = new Image(failStream);
+            } else {
+                logger.error("Could not load sad_face.jpeg image resource");
+                // Use a fallback or default image
+            }
+        } catch (Exception e) {
+            logger.error("Error loading image resources", e);
+        }
+    }
 
     public void setData(List<QuizQuestion> questions, long timeTaken) {
         this.questions = questions;
@@ -63,6 +87,11 @@ public class QuizSummaryScreen extends VBox implements ControlledScreen {
     }
 
     private void updateDisplay() {
+        // Initialize images if not already done
+        if (passIcon == null || failIcon == null) {
+            initializeImages();
+        }
+        
         if (questions == null || questions.isEmpty()) {
             logger.warn("No questions data available to display summary.");
             return;
@@ -114,7 +143,14 @@ public class QuizSummaryScreen extends VBox implements ControlledScreen {
     }
 
     private void updateMetricCard(VBox card, ImageView icon, Label scoreLabel, Label minLabel, int correct, int total, int min, boolean passed) {
-        icon.setImage(passed ? passIcon : failIcon);
+        // Only set image if it was successfully loaded
+        if ((passed && passIcon != null) || (!passed && failIcon != null)) {
+            icon.setImage(passed ? passIcon : failIcon);
+        } else {
+            // Hide the icon if image is not available
+            icon.setVisible(false);
+        }
+        
         scoreLabel.setText(String.format("You: %d/%d", correct, total));
         minLabel.setText(String.format("Minimum: %d", min));
         String bgColor = passed ? "#c8e6c9" : "#ffcdd2"; // Light green for pass, light red for fail

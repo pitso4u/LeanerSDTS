@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane stylesheets="/leanersdts/customstyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leanersdts.TakeQuizScreen">
+<BorderPane stylesheets="@customstyles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="leanersdts.TakeQuizScreen">
     <fx:define>
         <ToggleGroup fx:id="optionsGroup" />
     </fx:define>
@@ -27,6 +28,7 @@
                         <Label text="Quiz Progress" styleClass="progress-label" />
                         <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                         <Label fx:id="timerLabel" styleClass="timer-label" text="00:00" />
+                        <Label fx:id="learnerNameLabel" styleClass="learner-name-label" text="Learner: " />
                     </children>
                 </HBox>
             </children>
@@ -50,16 +52,26 @@
         </VBox>
     </center>
     <bottom>
-        <HBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER" styleClass="navigation-bar">
+        <VBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="20" left="20" right="20" top="10" />
             </BorderPane.margin>
             <children>
-                <Button fx:id="previousButton" onAction="#handlePreviousButtonAction" text="Previous" />
-                <Button fx:id="nextButton" onAction="#handleNextButtonAction" text="Next" />
-                <Button fx:id="skipButton" onAction="#handleSkipButtonAction" text="Skip" styleClass="skip-button" />
-                <Button fx:id="reviewButton" onAction="#handleReviewButtonAction" text="Review &amp; Submit" styleClass="review-button" />
+                <HBox alignment="CENTER" spacing="10">
+                    <children>
+                        <Label text="Font Size:" styleClass="font-size-label" />
+                        <Slider fx:id="fontSizeSlider" min="12" max="32" value="18" blockIncrement="2" showTickMarks="true" showTickLabels="true" majorTickUnit="10" minorTickCount="4" onValueChange="#handleFontSizeChange" prefWidth="300" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" spacing="20" styleClass="navigation-bar">
+                    <children>
+                        <Button fx:id="previousButton" onAction="#handlePreviousButtonAction" text="Previous" />
+                        <Button fx:id="nextButton" onAction="#handleNextButtonAction" text="Next" />
+                        <Button fx:id="skipButton" onAction="#handleSkipButtonAction" text="Skip" styleClass="skip-button" />
+                        <Button fx:id="reviewButton" onAction="#handleReviewButtonAction" text="Review &amp; Submit" styleClass="review-button" />
+                    </children>
+                </HBox>
             </children>
-        </HBox>
+        </VBox>
     </bottom>
 </BorderPane>
