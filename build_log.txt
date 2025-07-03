@@ -1,0 +1,285 @@
+--- Cleaning Up ---
+--- Creating Directories ---
+--- Copying Resources ---
+src\main\resources\logback.xml
+src\main\resources\Images\AbnormalVehiclesOnly.png
+src\main\resources\Images\AlternativeRoute.png
+src\main\resources\Images\BakubungPresent.jpg
+src\main\resources\Images\BakubungPresent.png
+src\main\resources\Images\bakubungwebsitebanner.jpg
+src\main\resources\Images\bakubungWhite.png
+src\main\resources\Images\car.svg
+src\main\resources\Images\carpng.png
+src\main\resources\Images\code-10.jpg
+src\main\resources\Images\code-14.jpg
+src\main\resources\Images\code-8.jpg
+src\main\resources\Images\CyclistsCrossing.png
+src\main\resources\Images\DisabledPersons.jpg
+src\main\resources\Images\DriveThere.png
+src\main\resources\Images\EmergencyPhone.png
+src\main\resources\Images\EndTollRoute.png
+src\main\resources\Images\FlagsIndicateProjection.png
+src\main\resources\Images\FollowCorrectRouteIntersection.png
+src\main\resources\Images\GoodsVehiclesOver10t.jpg
+src\main\resources\Images\happy_face.jpeg
+src\main\resources\Images\HeavyVehicleLowestGear.png
+src\main\resources\Images\InformationSign.png
+src\main\resources\Images\learners.png
+src\main\resources\Images\MaximumMassAxles.png
+src\main\resources\Images\MayOvertakeOther.png
+src\main\resources\Images\MiniBuses.png
+src\main\resources\Images\NoAgriculturalVehicles.png
+src\main\resources\Images\OnlyHeadbakubungClear.ico
+src\main\resources\Images\OnlyHeadbakubungClear.png
+src\main\resources\Images\OppositeRightLane.png
+src\main\resources\Images\RoadCurvesGently.png
+src\main\resources\Images\sad_face.jpeg
+src\main\resources\Images\sf.jpg
+src\main\resources\Images\SlowMovingTraffic.png
+src\main\resources\Images\SpeedHump.png
+src\main\resources\Images\StopSignAhead.png
+src\main\resources\Images\SwitchOffHeadLights.png
+src\main\resources\Images\UnevenRoadAhead.png
+src\main\resources\Images\VariousServiceCentres.png
+src\main\resources\Images\VehicleControls.jpg
+src\main\resources\Images\VehicleControls.png
+src\main\resources\Images\WindingRightLeft.png
+src\main\resources\leanersdts\customstyles.css
+src\main\resources\leanersdts\DashboardScreen.fxml
+src\main\resources\leanersdts\LearningModulesScreen.fxml
+src\main\resources\leanersdts\LoginScreen.fxml
+src\main\resources\leanersdts\QuizSummaryScreen.fxml
+src\main\resources\leanersdts\ResultsScreen.fxml
+src\main\resources\leanersdts\ReviewScreen.fxml
+src\main\resources\leanersdts\RiskPerceptionModuleScreen.fxml
+src\main\resources\leanersdts\RoadRulesModuleScreen.fxml
+src\main\resources\leanersdts\TakeQuizScreen.fxml
+src\main\resources\leanersdts\VehicleMaintenanceModuleScreen.fxml
+54 File(s) copied
+--- Compiling Java Source ---
+Finding all .java files...
+The following files will be compiled:
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\com\leaner\utils\LoggingUtils.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\AdjustOptionsButtonFontSize.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\AlertMaker.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ControlledScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ControlQuestion.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\DashboardScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\DatabaseConnector.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\DatabaseHelper.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\DatabaseInitializer.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\JavaFXDurationHandler.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\JavaTimeDurationHandler.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LeanerSDTS.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LearningModulesScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginData.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\Particle.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\PostgresDataContents.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\PostgresDataStracture.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ProgressTracking.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizQuestion.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizQuestionDatabase.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizSummaryScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ResultsScreenController.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreenController.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\RiskPerceptionModuleScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\RoadRulesModuleScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\RuleQuestion.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\SanFranciscoFireworks.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ScreenManager.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\SignQuestion.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\TakeQuizScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\VehicleMaintenanceModuleScreen.java
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\utils\LoggingUtils.java
+Running javac compiler...
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ScreenManager.java:10: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ScreenManager.java:11: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ScreenManager.java:26: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(ScreenManager.class);
+                         ^
+  symbol:   class Logger
+  location: class ScreenManager
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LeanerSDTS.java:13: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LeanerSDTS.java:14: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:12: error: package org.json does not exist
+import org.json.JSONException;
+               ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:13: error: package org.json does not exist
+import org.json.JSONObject;
+               ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:14: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:15: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LeanerSDTS.java:17: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(LeanerSDTS.class);
+                         ^
+  symbol:   class Logger
+  location: class LeanerSDTS
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:18: error: cannot find symbol
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServerDiscovery.class);
+                         ^
+  symbol:   class Logger
+  location: class ServerDiscovery
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginScreen.java:14: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginScreen.java:15: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginScreen.java:18: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(LoginScreen.class);
+                         ^
+  symbol:   class Logger
+  location: class LoginScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizSummaryScreen.java:9: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizSummaryScreen.java:10: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizSummaryScreen.java:15: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(QuizSummaryScreen.class);
+                         ^
+  symbol:   class Logger
+  location: class QuizSummaryScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreen.java:10: error: package org.slf4j does not exist
+import org.slf4j.Logger;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreen.java:11: error: package org.slf4j does not exist
+import org.slf4j.LoggerFactory;
+                ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreen.java:23: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(ReviewScreen.class);
+                         ^
+  symbol:   class Logger
+  location: class ReviewScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:8: error: package org.json does not exist
+import org.json.JSONObject;
+               ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:10: error: package org.json does not exist
+import org.json.JSONArray;
+               ^
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ScreenManager.java:26: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(ScreenManager.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class ScreenManager
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LeanerSDTS.java:17: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(LeanerSDTS.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class LeanerSDTS
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:18: error: cannot find symbol
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServerDiscovery.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class ServerDiscovery
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:105: error: cannot find symbol
+            JSONObject json = new JSONObject(message);
+            ^
+  symbol:   class JSONObject
+  location: class ServerDiscovery
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:105: error: cannot find symbol
+            JSONObject json = new JSONObject(message);
+                                  ^
+  symbol:   class JSONObject
+  location: class ServerDiscovery
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerDiscovery.java:113: error: cannot find symbol
+        } catch (JSONException e) {
+                 ^
+  symbol:   class JSONException
+  location: class ServerDiscovery
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\LoginScreen.java:18: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(LoginScreen.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class LoginScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\QuizSummaryScreen.java:15: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(QuizSummaryScreen.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class QuizSummaryScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ReviewScreen.java:23: error: cannot find symbol
+    private static final Logger logger = LoggerFactory.getLogger(ReviewScreen.class);
+                                         ^
+  symbol:   variable LoggerFactory
+  location: class ReviewScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:36: error: cannot find symbol
+            JSONObject requestBody = new JSONObject();
+            ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:36: error: cannot find symbol
+            JSONObject requestBody = new JSONObject();
+                                         ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:49: error: cannot find symbol
+                JSONObject jsonResponse = new JSONObject(response.body());
+                ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:49: error: cannot find symbol
+                JSONObject jsonResponse = new JSONObject(response.body());
+                                              ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:50: error: cannot find symbol
+                JSONObject user = jsonResponse.getJSONObject("user");
+                ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:86: error: cannot find symbol
+            JSONArray jsonArray = new JSONArray(response.body());
+            ^
+  symbol:   class JSONArray
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:86: error: cannot find symbol
+            JSONArray jsonArray = new JSONArray(response.body());
+                                      ^
+  symbol:   class JSONArray
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:88: error: cannot find symbol
+                JSONObject jsonQuestion = jsonArray.getJSONObject(i);
+                ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:289: error: cannot find symbol
+            JSONObject requestBody = new JSONObject();
+            ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\ServerConnector.java:289: error: cannot find symbol
+            JSONObject requestBody = new JSONObject();
+                                         ^
+  symbol:   class JSONObject
+  location: class ServerConnector
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\TakeQuizScreen.java:98: error: cannot find symbol
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+        ^
+  symbol:   class User
+  location: class TakeQuizScreen
+C:\Users\Soets\GitHub\LeanerSDTS\src\main\java\leanersdts\TakeQuizScreen.java:98: error: cannot find symbol
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+                           ^
+  symbol:   variable SessionManager
+  location: class TakeQuizScreen
+43 errors
+Checking for compilation errors...
+
+> > > COMPILE FAILED. See errors above. < < <
