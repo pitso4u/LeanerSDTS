@@ -58,7 +58,7 @@ public class DashboardScreen implements ControlledScreen {
         ControlledScreen controller = screenManager.getController(LeanerSDTS.TakeQuizScreenID);
         if (controller instanceof TakeQuizScreen) {
             TakeQuizScreen takeQuizController = (TakeQuizScreen) controller;
-            takeQuizController.setLearnerName(loginData.getFullName()); 
+            takeQuizController.setLearnerName(LoginData.getInstance().getFullName()); 
             takeQuizController.loadQuizDataAndStart();
         } else {
             LOGGER.severe("[DashboardScreen] Failed to get TakeQuizScreen controller or controller is of wrong type.");

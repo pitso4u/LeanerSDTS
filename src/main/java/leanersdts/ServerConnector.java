@@ -43,7 +43,7 @@ public class ServerConnector {
             requestBody.put("password", password);
 
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseUrl + "api/learners/authenticate"))
+                .uri(URI.create(baseUrl + "api/auth/authenticate"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody.toString()))
                 .build();

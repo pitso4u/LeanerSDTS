@@ -330,4 +330,12 @@ public class ReviewScreenController implements ControlledScreen {
         System.out.println("[ReviewScreenController] handleFilterAction called (post-results mode). Checkbox selected: " + showIncorrectOnlyCheckBox.isSelected());
         loadReviewContent(); // Reload content based on new filter state
     }
+    
+    @FXML
+    private void handleFontSizeChange() {
+        // Handle font size slider changes
+        // This method is called by the FXML slider component
+        // You can add font size adjustment logic here if needed
+        System.out.println("[ReviewScreenController] Font size change detected.");
+    }
 }
